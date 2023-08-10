@@ -1,0 +1,41 @@
+.highlight {
+    font-weight: bold;
+    color: #ff9900;
+}
+
+.row {
+    font-family: 'Sen', sans-serif;
+    padding: 20px;
+    line-height: 1.5;
+    color: #333;
+}
+
+
+h1, h2 {
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+ol, p {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.6em; 
+    }
+
+    ol, p {
+        font-size: 1.2em;
+    }
+}
+
+

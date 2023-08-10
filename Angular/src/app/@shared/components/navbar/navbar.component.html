@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top shadow">
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler icon-button"
+      type="button"
+      (click)="isNavbarCollapsed = !isNavbarCollapsed"
+      aria-controls="navbarTogglerDemo02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      color="white"
+    >
+      <mat-icon class="icon-menu">menu</mat-icon>
+    </button>
+    <div
+      class="collapse navbar-collapse"
+      id="navbarTogglerDemo02"
+      [ngbCollapse]="isNavbarCollapsed"
+    >
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/welcome" routerLinkActive="active">
+            <mat-icon class="icon-book-active">book</mat-icon><span>Regolamento</span>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/gioca" routerLinkActive="active">
+            <mat-icon class="icon-games-active">games</mat-icon><span>Gioca</span>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/rankings" routerLinkActive="active">
+            <mat-icon class="icon-scoreboard-active">scoreboard</mat-icon><span>Classifica</span>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/favorites" routerLinkActive="active">
+            <mat-icon class="icon-star-active">star</mat-icon><span>Recensioni</span>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/profile" routerLinkActive="active">
+            <mat-icon class="icon-account_circle-active">account_circle</mat-icon><span>Profilo</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

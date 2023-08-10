@@ -1,0 +1,20 @@
+<div class="profile-container"> 
+  <div class="profile-details"> 
+    <h2>Profilo Utente</h2> 
+    <div class="profile-item"> 
+      <span>Username:</span> 
+      <span class="profile-data">{{ currentUser.username }}</span> 
+    </div> 
+    <div class="profile-item"> 
+      <span>E-Mail:</span> 
+      <span class="profile-data">{{ currentUser.email }}</span> 
+    </div> 
+    <div class="profile-item"> 
+      <span>Punteggio totale:</span> 
+      <span class="profile-data">{{ currentUser.points }} punti</span> 
+    </div> 
+  </div> 
+  <div class="profile-logout"> 
+    <tnv-logout></tnv-logout> 
+  </div> 
+</div>

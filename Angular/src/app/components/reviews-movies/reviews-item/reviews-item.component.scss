@@ -1,0 +1,47 @@
+.card-body {
+  position:relative; 
+}
+
+.card-img-top {
+  width: 120%;
+  height: 110%;
+ 
+  box-shadow: 2px 2px 10px rgb(0, 0, 0);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  position: relative; /* Aggiungi questa proprietà per utilizzare "right" */
+  right: 20px; /* Sposta l'immagine verso destra di 20px */
+}
+
+.card-title {
+  font-size: 15px;
+}
+
+.fa-trash-alt {
+  font-size: 20px;
+  color: red;
+  top: 10px;
+  right: 40px;
+}
+
+.fa-edit {
+  font-size: 20px;
+  color: rgb(211, 136, 23);
+  top: 10px;
+  right: 6px;
+}
+
+
+.card-menu-container {
+  color: rgb(255, 255, 255);
+  z-index: 1; 
+  position: absolute;
+  top: 16px; 
+  right: -8px; 
+  z-index: 1; 
+  width: 15%; 
+  height: 15%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

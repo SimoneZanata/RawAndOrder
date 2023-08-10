@@ -1,0 +1,17 @@
+<div class="reviews-list">
+  <h4 class="text-center">Le tue recensioni:</h4>
+  <div class="movie-container">
+    <ng-container *ngFor="let review of reviews">
+      <div class="movie-card">
+        <div class="card border-0 shadow-sm py-2 text-center">
+          <tnv-reviews-item
+           (deleteClicked)="onDeleteClicked($event)"
+           (editClicked)="onEditClicked($event)"
+           (imgClicked)="onImgClicked($event)"
+           [review]="review">
+          </tnv-reviews-item>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

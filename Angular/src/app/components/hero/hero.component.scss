@@ -1,0 +1,59 @@
+header {
+  width: 100%;
+  background-image: url("/assets/images/hero-film.gif");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 3px 5px lightgray;
+  padding: 50px 0;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  h1 {
+    color: white;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 7vw;
+    margin: 0;
+    text-shadow: 2px 2px 4px black;
+  }
+
+  p {
+    color: white;
+    font-family: "Comfortaa", cursive;
+    font-size: 5vw;
+    margin: 0;
+    text-shadow: 2px 2px 4px black;
+    font-size: 2.5vw;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 64px;
+  }
+
+  .container section {
+    margin-top: 64px;
+    margin-bottom: 32px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    h1 {
+      font-size: 12vw;
+    }
+
+    p {
+      font-size: 7vw;
+      text-align: center;
+    }
+  }
+}

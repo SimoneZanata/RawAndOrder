@@ -1,0 +1,177 @@
+.card {
+  display: flex;
+  border-radius: 8px;
+  background-color: #ffffff; 
+  box-shadow: 0 4px 8px #00000044;
+  overflow: hidden;
+  margin-bottom: 16px;
+  font-family: 'Sen', sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.poster-container {
+  position: relative;
+  flex-shrink: 0;
+  width: 300px;
+  height: 450px;
+  overflow: hidden;
+}
+
+.poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 16px;
+  color: #1b1b1b;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1b1b1b; 
+  margin-bottom: 8px;
+}
+
+.overview {
+  font-size: 16px;
+  color: #1b1b1b;
+  margin-bottom: 12px;
+}
+
+.release-date,
+.vote-average {
+  font-size: 14px;
+  color: #1b1b1b; 
+  margin-bottom: 4px;
+}
+
+.comment{
+ color: #ff8c00;
+}
+
+.comment-container {
+  position: absolute;
+  top: 271px;
+  left: 310px;
+  display: grid;
+  gap: 8px;
+  align-items: center;
+}
+
+.comment-box {
+  width: 500px; 
+  max-width: 700px;  
+  height: 100px;
+  resize: vertical;
+  padding: 8px;
+  border: 1px solid #ff8c00;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #ffffff; 
+  color: #1b1b1b; 
+}
+
+.comment-btn {
+  background-color: #ff8c00;
+  color: #1b1b1b; 
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.comment-btn:hover {
+  background-color: #ffa64d;
+}
+
+.info-container {
+  position: absolute;
+  top: 5px;
+  left: 310px; 
+  display: grid;
+  gap: 8px;
+  align-items: center;
+}
+
+.rating-container {
+  display: flex;
+  align-items: center;
+  color: #ff8c00; 
+  margin-bottom: 8px;
+}
+
+.rating-icon {
+  font-size: 20px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.rating-value {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.rating-text{
+  font-size: 14px;
+  color: #1b1b1b;
+  margin-bottom: 4px;
+}
+
+.disabled-btn {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.disabled-btn:hover {
+  background-color: #ccc; 
+}
+
+.rating-container {
+  display: flex;
+  align-items: center;
+}
+
+.rating-label {
+  margin-right: 10px;
+  color: #1b1b1b; 
+}
+
+@media screen and (max-width: 600px) {
+  .card-content {
+    flex-direction: column;
+
+    .info-container {
+      order: 1;
+      position: static;
+    }
+
+    .comment-container {
+      order: 3;
+      position: static;
+      width: 100%;
+    }
+
+    .overview {
+      order: 2;
+    }
+
+    .comment-box {
+      width: 90%;
+    }
+
+    .rating-container {
+      justify-content: center;
+    }
+
+    .buttons-container {
+      justify-content: center;
+    }
+  }
+}

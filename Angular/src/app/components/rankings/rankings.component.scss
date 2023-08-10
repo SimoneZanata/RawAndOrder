@@ -1,0 +1,47 @@
+.arrows:hover {
+  cursor: pointer;
+  color: #000000e7;
+  transform: scale(1.2);
+}
+
+.arrows:active {
+  transform: rotate(180deg);
+}
+
+.movie-list {
+  font-family: 'Sen', sans-serif;
+  padding: 20px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 0 auto;
+
+  th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  th {
+    background-color: #f5930092;
+    color: white;
+  }
+
+  td {
+    transition: background-color 0.3s ease;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+}
+
+h4 {
+  text-align: center;
+}

@@ -1,0 +1,85 @@
+// ---
+// Material Theme
+// ---
+
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+// Color palettes
+@import "./palettes.scss";
+
+
+$tnv-project-template-primary: mat.define-palette($primary-palette);
+$tnv-project-template-accent: mat.define-palette($secondary-palette);
+$tnv-project-template-warn: mat.define-palette(mat.$red-palette);
+
+$tnv-project-template-theme: mat.define-light-theme((
+  color: (
+    primary: $tnv-project-template-primary,
+    accent: $tnv-project-template-accent,
+    warn: $tnv-project-template-warn,
+  )
+));
+
+@include mat.all-component-themes($tnv-project-template-theme);
+
+// ---
+// BOOTSTRAP Theme
+// ---
+$primary: map-get($primary-palette, 700);
+$secondary: map-get($secondary-palette, 300);
+$font-family-sans-serif: 'Sen', sans-serif;
+
+@import "bootstrap/scss/bootstrap";
+
+
+// GLOBAL STYLES qui sotto
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Sen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+label {
+  text-transform: uppercase;
+  font-size: small;
+  font-weight: bold;
+}
+
+ngb-rating {
+  color: $primary;
+}
+
+html, body {
+  height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  position: relative; /* Aggiungi posizione relativa al body */
+ // background-color: rgb(224, 224, 224);
+}
+/*.image-container{
+  background-color: rgb(224, 224, 224);;
+  border-color: rgb(224, 224, 224);
+}
+
+.card{
+  background-color:rgb(224, 224, 224);
+  border-color: rgb(224, 224, 224);
+}
+.card-body {
+  background-color: rgb(224, 224, 224);
+  border-color: rgb(224, 224, 224);
+}
+
+.movie-card {
+  background-color:rgba(33, 32, 32, 0.135);
+  border-color: rgba(33, 32, 32, 0.135);
+}
+
+.movie-container {
+  background-color:rgb(224, 224, 224);
+  border-color: rgb(224, 224, 224);
+}*/
