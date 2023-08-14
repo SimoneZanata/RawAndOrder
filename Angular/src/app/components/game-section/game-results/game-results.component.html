@@ -1,14 +1,19 @@
-<div class="movie-list">
-  <h4>Ecco la lista dei film ordinati per {{ sortedCriteria }}:</h4>
-  <div *ngIf="gameSessionPoints > 0">
-    <h6 class="points">- Complimenti!! Hai ottenuto un totale di 
-      <span class="points-highlight" [ngClass]="{gameSessionPoints}">{{gameSessionPoints}}</span> punti! -
-    </h6>
-  </div> <!-- Add this closing div tag -->
+<div>
+  <div class="result">
+    <h4>Ecco la lista dei film ordinati per {{ sortedCriteria }}:</h4>
+    <div *ngIf="gameSessionPoints > 0">
+      <h6 class="points">- Complimenti!! Hai ottenuto un totale di
+        <span class="points-highlight" [ngClass]="{gameSessionPoints}">{{gameSessionPoints}}</span> punti! -
+      </h6>
+    </div>
+  
   <div *ngIf="gameSessionPoints == 0">
     <h6>- Che sfortuna!! Non hai ottenuto nessun punto! -</h6>
   </div>
-  <br><br>
+</div> 
+</div>
+<br><br>
+<div class="movie-list">
   <ul class="order-list">
     <li *ngFor="let movie of sortedMoviesByCalculator" class="movie-item">
       <div *ngIf="movie.catch" class="movie-title correct">
@@ -35,7 +40,7 @@
 <div class="movie-container">
   <ng-container *ngFor="let movie of sortedMoviesByCalculator">
     <div class="movie-card">
-      <div class="card border-0 shadow-sm py-2 text-center">
+      <div class=" shadow-sm py-0 text-center">
         <tnv-game-results-item (clicked)="onClicked($event)" [movie]="movie"></tnv-game-results-item>
       </div>
     </div>

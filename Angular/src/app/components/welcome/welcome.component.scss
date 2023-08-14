@@ -1,13 +1,33 @@
+.card {
+    display: flex;
+    border-radius: 8px;
+    background-color: hsla(0, 4%, 10%, 0.769); /* Sfondo bianco molto trasparente */
+    background-blend-mode: darken;
+    background-size: cover;
+    background-image: url("/assets/images/Copia.png");
+    background-position: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.44);
+    overflow: hidden;
+    margin-bottom: 16px;
+    font-family: 'Sen', sans-serif;
+    transition: all 1s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
 .highlight {
     font-weight: bold;
-    color: #ff9900;
+    color:#ff8c00;
+    animation: glow 2s infinite; /* Applica l'animazione di glow */
 }
 
 .row {
     font-family: 'Sen', sans-serif;
     padding: 20px;
     line-height: 1.5;
-    color: #333;
+    color: white;
 }
 
 
@@ -38,4 +58,15 @@ ol, p {
     }
 }
 
+@keyframes glow {
+    0%, 100% {
+      opacity: 0.8;
+     
+    }
+    50% {
+      opacity: 8;
+      text-shadow: 0 0 10px white; /* Cambia il colore e la dimensione del bagliore qui */
+    
+    }
+}
 

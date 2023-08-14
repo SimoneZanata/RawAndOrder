@@ -30,9 +30,11 @@ import { ReviewsItemComponent } from './components/reviews-movies/reviews-item/r
 import { MatMenuModule } from '@angular/material/menu';
 import { ReviewsItemDetailsComponent } from './components/reviews-movies/reviews-item-details/reviews-item-details.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-import { PageReviewsComponent } from './components/reviews-movies/page-reviews/page-reviews.component';
+import { PageReviewsComponent } from './components/page-components/page-reviews/page-reviews.component';
 import { PageGameResultsItemDetailsComponent } from './components/game-section/page-game-results-item-details/page-game-results-item-details.component';
-//import { PageGameComponent } from './page-game/page-game.component';
+import { PageGameSessionComponent } from './components/page-components/page-game-session/page-game-session.component';
+import { PageReviewItemDetailsComponent } from './components/page-components/page-review-item-details/page-review-item-details.component';
+import { PageRankingsComponent } from './components/page-components/page-rankings/page-rankings.component';
 
 
 
@@ -60,7 +62,9 @@ import { PageGameResultsItemDetailsComponent } from './components/game-section/p
     EditProfileComponent,
     PageReviewsComponent,
     PageGameResultsItemDetailsComponent,
-   // PageGameComponent,
+    PageGameSessionComponent,
+    PageReviewItemDetailsComponent,
+    PageRankingsComponent,
    
 
   ],

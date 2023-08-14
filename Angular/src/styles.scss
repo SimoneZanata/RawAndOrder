@@ -56,11 +56,13 @@ ngb-rating {
 
 html, body {
   height: 100%;
+  //background-image: url("/assets/images/RAW_ORDER.png");
+  background-size: cover;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   position: relative; /* Aggiungi posizione relativa al body */
- // background-color: rgb(224, 224, 224);
-}
-/*.image-container{
+  //background-color: rgb(224, 224, 224);
+}/*
+.image-container{
   background-color: rgb(224, 224, 224);;
   border-color: rgb(224, 224, 224);
 }

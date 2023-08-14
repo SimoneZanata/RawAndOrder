@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable, Input, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/@core/services/auth.service';
 import { User } from 'src/app/models/user';
@@ -15,44 +15,27 @@ import { RankingsService } from 'src/app/services/rankings.service';
   templateUrl: './rankings.component.html',
   styleUrls: ['./rankings.component.scss']
 })
-export class RankingsComponent implements OnInit {
+export class RankingsComponent implements OnChanges {
   springBootUrl = 
   'http://localhost:8080/users';
-  user!: User;
-  users: User[] | undefined;
+  @Input() users: User[] =[];
   sortKey = 'points';
-  sortAsc = true;
+  sortDesc = true;
 
-  constructor(private activatedRoute: ActivatedRoute,private rankService:RankingsService, private http: HttpClient) { 
-  this.user=this.getCurrentUser();
-  }
+  constructor(private rankService:RankingsService) {}
 
-  ngOnInit(): void {
-    this.AllUsers();
-  }
-
-  getCurrentUser() {
-    const user = JSON.parse(localStorage.getItem("user") || '') as User;
-    return user;
+  ngOnChanges(): void {
+    this.sortUsers();
   }
 
   AllUsers(){
-    this.rankService.getAllUsers().subscribe({
-        next: (response) => {
-          this.users = (response);
-          this.sortUsers();
-          console.log('Utenti recuperati dall\'API:', this.users);
-        },
-        error: (error : any) => {
-          console.error('Si è verificato un errore nel recupero degli utenti:', error);
-        }
-      });
+    this.rankService.getAllUsers()
   }
   
   sortUsers() {
-    this.sortAsc = !this.sortAsc;
-    this.users = this.users?.sort((a: any, b: any) => {
-      return (this.sortAsc ? 1 : -1) * (Number(a.points) - Number(b.points));
+    this.sortDesc = !this.sortDesc;
+    this.users = this.users?.sort((b: any, a: any) => {
+      return (this.sortDesc ? -1 : 1) * (Number(b.points) - Number(a.points));
     });
   }    
 }  

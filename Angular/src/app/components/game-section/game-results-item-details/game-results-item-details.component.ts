@@ -1,10 +1,9 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges} from '@angular/core';
 import { Router } from '@angular/router';
 import { ReviewService } from 'src/app/@shared/services/review.service';
 import { Movie } from 'src/app/models/movie';
 import { Review } from 'src/app/models/review';
 import { User } from 'src/app/models/user';
-//import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'tnv-game-results-item-details',
@@ -12,7 +11,6 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./game-results-item-details.component.scss']
 })
 export class GameResultsItemDetailsComponent implements OnChanges {
-
   movieId!: number;
   isFormValid: boolean = false;
   comment: string = '';
@@ -36,7 +34,7 @@ export class GameResultsItemDetailsComponent implements OnChanges {
   };
   @Input() movie: Movie = {
     adult: false,
-    backdrop_path: '',
+    backdrop_path:'',
     genre_ids: [],
     id: 0,
     original_language: '',
@@ -52,7 +50,7 @@ export class GameResultsItemDetailsComponent implements OnChanges {
     catch: false,
   };
 
-  constructor(public reviewService: ReviewService, private router: Router,/*private toastr: ToastrService*/) {
+  constructor(public reviewService: ReviewService, private router: Router) {
     this.currentUser = JSON.parse(localStorage.getItem("user") || '') as User;
   }
 
@@ -85,8 +83,9 @@ export class GameResultsItemDetailsComponent implements OnChanges {
     this.isFormValid = !!this.comment && !!this.rating;
   }
 
-
+  
   addToFavorites() {
+    this.review = Object.assign({});
     this.review.userId = this.currentUser.id;
     this.review.textComment = this.comment;
     this.review.ratingStars = this.rating;
@@ -101,9 +100,5 @@ export class GameResultsItemDetailsComponent implements OnChanges {
     this.reviewService.addReview(this.review);
 
     this.router.navigateByUrl("/result");
-
-    //this.toastr.success('Film aggiunto alla lista dei preferiti', 'Successo', {
-      //timeOut: 1500, // Tempo in millisecondi prima che il pop-up si chiuda automaticamente
-    //});
   }
 }

@@ -1,8 +1,11 @@
 .card {
   display: flex;
   border-radius: 8px;
-  background-color: #ffffff; 
-  box-shadow: 0 4px 8px #00000044;
+  background-color: hsla(0, 0%, 9%, 0.769); /* Sfondo bianco molto trasparente */
+  background-blend-mode: darken;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.44);
   overflow: hidden;
   margin-bottom: 16px;
   font-family: 'Sen', sans-serif;
@@ -33,30 +36,40 @@
 }
 
 .title {
-  font-size: 24px;
+ // margin-inline: 300px;
+  font-size: 40px;
   font-weight: bold;
-  color: #1b1b1b; 
+  color: white; 
   margin-bottom: 8px;
 }
 
 .overview {
-  font-size: 16px;
-  color: #1b1b1b;
+  font-size: 20px;
+  color: white;
   margin-bottom: 12px;
 }
 
 .release-date,
 .vote-average {
-  font-size: 14px;
-  color: #1b1b1b; 
+  font-size: 18px;
+  color: white; 
   margin-bottom: 4px;
 }
 
+
 .comment{
- color: #ff8c00;
+font-size: 20px;
+color: #ff8c00;
 }
 
-.comment-container {
+
+.comment-text{
+ font-size: 18px;
+ max-width: 800px;
+ color: white;
+}
+
+.review-container {
   position: absolute;
   top: 271px;
   left: 310px;
@@ -65,7 +78,13 @@
   align-items: center;
 }
 
+.comment-rating {
+  color: #ff8c00; 
+  font-size: 22px;
+}
+
 .comment-box {
+  display: flex;
   width: 500px; 
   max-width: 700px;  
   height: 100px;
@@ -74,8 +93,13 @@
   border: 1px solid #ff8c00;
   border-radius: 4px;
   font-size: 14px;
-  background-color: #ffffff; 
-  color: #1b1b1b; 
+  background-color: transparent; 
+  color: white; 
+}
+
+.comment-box::placeholder { 
+  color: white; 
+  font-size: 18px;
 }
 
 .comment-btn {
@@ -88,11 +112,14 @@
   transition: all 0.3s ease-in-out;
 }
 
+
+
 .comment-btn:hover {
   background-color: #ffa64d;
 }
 
 .info-container {
+  color: white;
   position: absolute;
   top: 5px;
   left: 310px; 
@@ -109,39 +136,66 @@
 }
 
 .rating-icon {
-  font-size: 20px;
-  margin-right: 4px;
-  vertical-align: middle;
+  font-size: 25px;
+  margin-bottom:3px;
+  margin-right: 3px;
+  margin-left: 3px;
+  vertical-align:auto;
 }
 
 .rating-value {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
+  margin-bottom:4px;
+  
 }
 
 .rating-text{
-  font-size: 14px;
-  color: #1b1b1b;
+  font-size: 18px;
+  color: white;
   margin-bottom: 4px;
+  opacity: 1;
+}
+
+.rating-user{
+  font-size: 18px;
+  color: #ff8c00;
+  margin-bottom: 0px;
+  opacity: 1;
 }
 
 .disabled-btn {
   background-color: #ccc;
   cursor: not-allowed;
+  animation: none;
+  opacity: 0.5;
 }
 .disabled-btn:hover {
   background-color: #ccc; 
+  animation: none;
 }
+
 
 .rating-container {
   display: flex;
   align-items: center;
 }
 
-.rating-label {
+.rating-label{
+  font-size: 20px;
   margin-right: 10px;
-  color: #1b1b1b; 
+  color: #ff8c00;
 }
+
+.alert {
+  font-size: 18px;
+  width: 770px;
+  height: 60px;
+  color: #333;
+}
+
+
+
 
 @media screen and (max-width: 600px) {
   .card-content {
@@ -174,4 +228,32 @@
       justify-content: center;
     }
   }
+}
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.8;
+   
+  }
+  50% {
+    opacity: 8;
+    text-shadow: 0 0 10px white; /* Cambia il colore e la dimensione del bagliore qui */
+  
+  }
+}
+@keyframes glow-box {
+  0%, 100% {
+    box-shadow: 0 0 10px white; /* Cambia il colore e la dimensione del bagliore qui */
+  }
+  50% {
+    box-shadow: 0 0 20px white; /* Cambia il colore e la dimensione del bagliore qui */
+  }
+}
+
+
+
+.comment-box{
+  animation: glow-box 1s infinite; /* Applica l'animazione di glow */
+}
+.comment-rating {
+  animation: glow 1s infinite; /* Applica l'animazione di glow */
 }

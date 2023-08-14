@@ -1,25 +1,25 @@
-<div class="card">
+<div class="card" [style.background-image]="'url(https://image.tmdb.org/t/p/original/' + movie.backdrop_path + ')'">
   <div class="poster-container">
-    <img [src]="'https://image.tmdb.org/t/p/w342/'+ movie.poster_path" [alt]="movie.title" class="poster">
+    <img [src]="'https://image.tmdb.org/t/p/w342/' + movie.poster_path" [alt]="movie.title" class="poster">
   </div>
   <div class="card-content">
     <div class="info-container">
       <h3 class="title">{{ movie.title }}</h3>
-      <p class="release-date">Data d'uscita: {{ movie.release_date }}</p>
-      <p class="release-date">Lingua Originale: {{ movie.original_language }}</p>
+      <br>
+      <span class="release-date">Data d'uscita: {{ movie.release_date }}</span>
+      <span class="release-date">Lingua Originale: {{ movie.original_language }}</span>
       <div class="rating-container">
-        <span class="rating-text"> voto medio:</span>
+        <span class="rating-text"> Voto medio:</span>
         <span class="rating-icon">&#9733;</span>
         <span class="rating-value"> {{ movie.vote_average }}/10.0</span>
       </div>
     </div>
+    <br>
     <p class="overview">{{ movie.overview }}</p>
     <div *ngIf="!reviewService.reviewExists">
-      <div *ngIf="!isFormValid " class="alert alert-warning mt-3">
-        Per poter recensire il film, è obbligatorio lasciare un commento e assegnare un voto.
-      </div>
-      <div class="comment-container">
-        <ngb-rating [rate]="rating" [max]="5" (rateChange)="onRatingChange($event)"></ngb-rating>
+      <div class="review-container">
+        <ngb-rating class="comment-rating" [rate]="rating" [max]="10"
+          (rateChange)="onRatingChange($event)"></ngb-rating>
         <textarea class="comment-box" placeholder="Lascia un commento... (max 160 caratteri)" maxlength="160"
           (input)="onCommentChange($event)"></textarea>
         <div class="buttons-container">
@@ -31,15 +31,14 @@
       </div>
     </div>
     <div *ngIf="reviewService.reviewExists">
-      <div class="comment-container">
+      <div class="review-container">
         <div class="rating-container">
           <span class="rating-label">Valutato:</span>
-          <ngb-rating [rate]="rating" [max]="5" [readonly]="true"></ngb-rating>
+          <ngb-rating class="rating-user" [rate]="rating" [max]="10" [readonly]="true"></ngb-rating>
         </div>
-        <span class="comment">La tua Recensione:</span>
-           "{{ comment }}"
+        <span class="comment">La tua Recensione (inserita il {{review.timestamp}}):</span>
+        <div class="comment-text">
+          "{{ comment }}"
+        </div>
       </div>
-      <p class="alert alert-secondary mt-3">>Questo film e' stato recensito il {{review.timestamp}}</p>
     </div>
-  </div>
-</div>

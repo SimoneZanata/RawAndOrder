@@ -1,5 +1,5 @@
 .header {
-  margin-bottom: 20px;
+ // margin-bottom: 20px;
 }
 
 .container {
@@ -9,59 +9,16 @@
   justify-content: center;
   width: 100%;
   margin: 0 auto;
-  padding: 20px;
+  //padding: 20px;
 }
 
-.header-container {
-  text-align: center;
-  background-image: url("/assets/images/orange-cinema-seats2.png");
-  background-position: 50% 75%;
-  background-size: cover;
-  margin-top: 20px;
-  margin-left: -1%;
-  margin-bottom: 20px;
-  position: relative;
-  width: 100vw;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: -137px;
-}
 
-.section-header {
-  border-radius: 15px;
-  padding: 20px;
-  max-width: 400px;
-  margin: 0 auto;
-  text-align: center;
-  position: relative;
-  top: 240px;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgb(255, 185, 20));
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-
-  h3 {
-    font-size: 35px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  font-family: 'Dancing Script', cursive;
-  }
-
-  h4 {
-    font-size:25px;
-    font-weight: 400;
-  
-    .sorted {
-      font-weight: bold;
-    }
-  }
-}
 
 .example-list {
+  font-family: 'Sen', sans-serif;
+  color:#fff;
   min-height: 200px;
-  width: 80%;
+  width: 90%;
   max-width: 500px;
   display: flex;
   flex-direction: column;
@@ -70,23 +27,24 @@
   gap: 5px;
   padding: 20px;
   margin-bottom: 40px;
-  background-image: url("/assets/images/orange-background.png");
+  background-image: url("/assets/images/RAW_ORDER.png");
   background-size: cover;
   background-repeat: cover;
   background-position: center center;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.512);
-  margin-top: 20px;
+  //margin-top: 20px;
   top: 40px;
 }
 
 .example-box {
+  font-family: 'Sen', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  width: 250px;
-  height: 50px;
+  width: 300px;
+  height: 60px;
   margin-top: 5px;
   margin-bottom: 5px;
   border: 1px solid #ccc;
@@ -96,8 +54,8 @@
   cursor: grab;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   font-size: 16px;
-  font-family: 'Special Elite', cursive;
-  color: #fbfbfb;
+  //font-family: 'Special Elite', cursive;
+  color: #ee9b02;
 }
 
 .example-box:hover {
@@ -150,7 +108,7 @@
     border-color 0.3s ease-out;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 400px) {
   .header-container {
     height: 200px;
   }

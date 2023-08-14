@@ -12,7 +12,6 @@ export class ReviewService {
   API_ROOT = 'http://localhost:1234/api';
   reviews: Review []=[];
   reviewExists: Boolean =false;
-
   review: Review = {
     idRating: 0,
     userId: 0,
@@ -27,9 +26,6 @@ export class ReviewService {
     movieReleaseDate: '',
     movieVoteAverage: 0,
   };
-
-  
-  currentUser= JSON.parse(localStorage.getItem("user") || '') as User;
 
   constructor(private httpClient: HttpClient) {
   }
@@ -51,7 +47,7 @@ export class ReviewService {
 
   
   getReviews(userId: number) {
-    this.review = Object.assign({});
+    this.reviews = []
     this.httpClient.get<Review[]>(`${this.API_ROOT}/ratings/${userId}`).subscribe({
       next: (res: Review[]) => {
         this.reviews = res;
@@ -79,11 +75,11 @@ export class ReviewService {
   addReview(rating: Review) {
     this.httpClient.post<any>(`${this.API_ROOT}/ratings/`, rating).subscribe({
       next: (rating) => 
-        this.reviews= [...this.reviews, rating.data],
+        this.reviews.push(rating.data),
         error: (error) => {
           console.error('Errore durante l\'inserimento della recensione:', error);
-        }
-      });
+        console.log(this.review)}
+    });
   }
 
 

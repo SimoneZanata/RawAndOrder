@@ -4,13 +4,14 @@
       <div>
         <div class="main-header"></div>
         <div class="section-header">
-          <h3>Inizia lo spettacolo!</h3>
-          <h4>Ordina per <span class="sorted">{{ sortedCriteria }}</span></h4>
         </div>
       </div>
     </div>
   </div>
   <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <h3>INIZIA LO SPETTACOLO!</h3>
+    <h4>Ordina per <span class="sorted">{{ sortedCriteria }}</span></h4>
+    <br>
     <div class="example-box" *ngFor="let movie of movies" cdkDrag>
       {{ movie.title }}
       <img *cdkDragPreview [src]="

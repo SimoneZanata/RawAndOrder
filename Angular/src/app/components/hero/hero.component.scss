@@ -1,6 +1,7 @@
 header {
   width: 100%;
-  background-image: url("/assets/images/hero-film.gif");
+  height: 370px;
+  background-image: url("/assets/images/Raw&ORDER4.png");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -12,11 +13,12 @@ header {
 
   img {
     max-width: 100%;
-    height: auto;
+    height: 300px;
     object-fit: contain;
   }
 
   h1 {
+    text-align: right;
     color: white;
     font-family: "Bebas Neue", sans-serif;
     font-size: 7vw;

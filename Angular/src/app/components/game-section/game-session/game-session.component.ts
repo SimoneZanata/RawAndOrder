@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { DbmoviesService } from '../../../services/dbmovieservice.service';
 import { Movie} from '../../../models/movie';
 import {
@@ -15,10 +15,10 @@ import { GameRepositoryService } from 'src/app/services/game-repository.service'
   styleUrls: ['./game-session.component.scss'],
   
 })
-export class GameSessionComponent implements OnInit {
+export class GameSessionComponent implements OnChanges {
 
 
-  movies!: Movie[] ;
+  @Input() movies: Movie[]=[];
   criteria:String[]=["popolarità","data d'uscita"]; 
   sortedCriteria =this.shuffleArray(this.criteria)[0];
   isSubmitPressed: boolean = false;
@@ -26,19 +26,13 @@ export class GameSessionComponent implements OnInit {
   constructor(public dbmoviesService: DbmoviesService, private gameRepository: GameRepositoryService, private router: Router) {
   }
 
-  ngOnInit() {
-    this.getMovies();
-    this.movies = this.shuffleArray(this.dbmoviesService.movies).slice(0,10);
+
+  ngOnChanges() {
+    this.movies = this.shuffleArray(this.movies).slice(0,10);
   }
 
    shuffleArray(array: any []) {
     return array.sort(()=> Math.random()-0.5);
-  }
-//Funzione dove una volta effettuata la chiamata per i movies, si mescolano e prendono solo 10 per il gioco
-  getMovies() {
-    this.dbmoviesService.getMovies()
-    
-    
   }
 
   drop(event: CdkDragDrop<{ title: string; poster: string }[]>) {

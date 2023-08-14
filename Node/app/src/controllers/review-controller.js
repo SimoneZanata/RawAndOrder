@@ -1,5 +1,6 @@
 import Review from "../models/review.js";
 
+
 export const checkReview = async (req, res) => {
     try {
         const review = await Review.findOne({
@@ -48,7 +49,6 @@ export const getReviews = async (req, res) => {
           userId: req.params.userId,
         },
       });
-  
       if (ratings) {
         res.send(ratings);
       } else {

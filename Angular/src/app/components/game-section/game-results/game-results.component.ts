@@ -18,15 +18,15 @@ export class GameResultsComponent implements OnInit {
   sortedCriteria = this.gameRepository.getSortedCriteria();
   sortedMoviesByUser = this.gameRepository.getMoviesByUser();
   sortedMoviesByCalculator = [...this.sortedMoviesByUser];
-  currentUser!: User | undefined;
+  currentUser: User;
   gameSessionPoints:number = 0;
 
-  constructor(private gameRepository: GameRepositoryService, private router: Router,private rankService: RankingsService) {
-    
-  }
-    
+  constructor(private gameRepository: GameRepositoryService, private router: Router,
+    private rankService: RankingsService,private authService: AuthService) {
+    this.currentUser= this.authService.getCurrentUser();   
+  }  
+  
   ngOnInit() {
-    this.currentUser=this.rankService.getCurrentUser();
     this.compareMovies(this.sortedMoviesByUser, this.sortedMoviesByCalculator);
   }
 
@@ -53,24 +53,9 @@ export class GameResultsComponent implements OnInit {
       }
     }
     this.gameSessionPoints = count * 10;
-    if (this.currentUser) {
-      this.addPointsUser(this.currentUser,this.gameSessionPoints);
-    }
+    this.rankService.addPointsUser(this.currentUser,this.currentUser.id,this.gameSessionPoints);
   }
 
-  addPointsUser(user: User, points: number) {
-    this.rankService.addPointsUser(user, user.id,points).subscribe({
-      next: (response) => {
-        this.currentUser = response;
-        console.log('Utente aggiornato', this.currentUser);
-        localStorage.setItem("user", JSON.stringify(response));
-      },
-      error: (error: any) => {
-        console.error('Si è verificato un errore nel salvataggio:', error);
-      }
-    });
-  }
-  
   onClicked(id: number) {
     this.router.navigateByUrl(`movie/${id}`);
   }

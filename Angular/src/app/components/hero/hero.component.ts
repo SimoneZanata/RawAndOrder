@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ReviewService } from 'src/app/@shared/services/review.service';
 
 @Component({
   selector: 'tnv-hero',
@@ -7,6 +8,6 @@ import { Component } from '@angular/core';
 })
 export class HeroComponent {
 
-  constructor() {
+  constructor(public reviewsService: ReviewService) {
   }
 }
