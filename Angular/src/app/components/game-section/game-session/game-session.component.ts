@@ -45,8 +45,8 @@ export class GameSessionComponent implements OnChanges {
     this.isSubmitPressed = true;
     this.gameRepository.setMoviesByUser(this.movies);
     this.gameRepository.setSortedCriteria(this.sortedCriteria);
+    this.gameRepository.setStateFalse();
     console.log('film ordinati dal calcolatore', this.movies);
     this.router.navigate(['/result']);
-  }
-  
+  }  
 }

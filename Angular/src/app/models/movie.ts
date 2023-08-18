@@ -15,3 +15,4 @@ export interface Movie {
     vote_count: number
     catch:boolean
   }
+  

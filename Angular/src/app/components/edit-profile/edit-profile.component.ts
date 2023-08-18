@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from "src/app/@core/services/auth.service";
-import { User } from 'src/app/models/user';
+import { UpdateUser, User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-edit-profile',
@@ -10,21 +10,17 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent {
-  email: string = '';
-  password: string = '';
+
 
   constructor(private authService: AuthService, private router:Router) { }
 
 
   updateUser(form: NgForm) {
-    console.log("login component.ts", form.value);
     form.control.markAllAsTouched();
     if (form.valid) {
-      const updatedUser = {
-        email: form.value.newEmail,
-        password: form.value.newPassword,
-        id: this.authService.getCurrentUser().id
-      };
+      const updatedUser : UpdateUser = form.value; 
+      updatedUser.id= this.authService.getCurrentUser().id;
+      console.log(updatedUser);
       this.authService.updateProfile(updatedUser).subscribe({
         next: (user) => {
           localStorage.setItem("user", JSON.stringify(user));
@@ -37,7 +33,7 @@ export class EditProfileComponent {
           console.error('Errore durante l\'aggiornamento del profilo', error);
         }
       });
+    }
   }
-}
-
+  
 }

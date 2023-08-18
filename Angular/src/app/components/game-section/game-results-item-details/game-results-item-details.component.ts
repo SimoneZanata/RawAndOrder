@@ -27,6 +27,7 @@ export class GameResultsItemDetailsComponent implements OnChanges {
     movieId: 0,
     movieTitle: '',
     movieImg: '',
+    movieBackground:'',
     movieDescription: '',
     movieLanguage: '',
     movieReleaseDate: '',
@@ -53,6 +54,7 @@ export class GameResultsItemDetailsComponent implements OnChanges {
   constructor(public reviewService: ReviewService, private router: Router) {
     this.currentUser = JSON.parse(localStorage.getItem("user") || '') as User;
   }
+
 
   ngOnChanges() {
     this.comment = '';
@@ -92,13 +94,15 @@ export class GameResultsItemDetailsComponent implements OnChanges {
     this.review.movieId = this.movie.id;
     this.review.movieTitle = this.movie.title;
     this.review.movieImg = this.movie.poster_path;
+    this.review.movieBackground=this.movie.backdrop_path;
     this.review.movieDescription = this.movie.overview;
     this.review.movieLanguage = this.movie.original_language;
     this.review.movieReleaseDate = this.movie.release_date;
     this.review.movieVoteAverage = this.movie.vote_average;
-
     this.reviewService.addReview(this.review);
-
-    this.router.navigateByUrl("/result");
+     this.router.navigateByUrl("/result"); 
+     setTimeout(() => {
+      alert('Recensione aggiunta con successo');
+    }, 200);
   }
 }

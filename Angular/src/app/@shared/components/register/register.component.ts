@@ -20,18 +20,21 @@ export class RegisterComponent implements OnInit {
   }
 
   register(form: NgForm) {
-    
     form.control.markAllAsTouched();
     if (form.valid) {
       const registerForm: RegisterDTO= form.value;
    this.authService.register(registerForm).subscribe({
         next: () => {
           this.router.navigateByUrl("/login");
+          setTimeout(() => {
+            alert('Registrazione avvenuta con successo');
+          }, 200);
         },
         error: () => alert("Errore Durante la Registrazione"),
       });
-   }
+    }
   }
+
 }
 
 

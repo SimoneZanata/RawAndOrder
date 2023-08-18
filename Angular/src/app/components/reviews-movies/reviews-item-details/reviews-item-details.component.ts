@@ -19,6 +19,7 @@ export class ReviewsItemDetailsComponent implements OnChanges {
     movieId: 0,
     movieTitle: '',
     movieImg: '',
+    movieBackground:'',
     movieDescription: '',
     movieLanguage: '',
     movieReleaseDate: '',

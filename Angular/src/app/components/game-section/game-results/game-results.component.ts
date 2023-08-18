@@ -13,25 +13,35 @@ import { GameRepositoryService } from 'src/app/services/game-repository.service'
   styleUrls: ['./game-results.component.scss']
 })
 export class GameResultsComponent implements OnInit {
-
-  movie: Movie | undefined;
+  movie!: Movie | undefined;
+  currentCriteria!:any;
   sortedCriteria = this.gameRepository.getSortedCriteria();
   sortedMoviesByUser = this.gameRepository.getMoviesByUser();
   sortedMoviesByCalculator = [...this.sortedMoviesByUser];
   currentUser: User;
   gameSessionPoints:number = 0;
 
-  constructor(private gameRepository: GameRepositoryService, private router: Router,
+  constructor(public gameRepository: GameRepositoryService, private router: Router,
     private rankService: RankingsService,private authService: AuthService) {
-    this.currentUser= this.authService.getCurrentUser();   
+    this.currentUser= this.authService.getCurrentUser();
+       
   }  
   
   ngOnInit() {
     this.compareMovies(this.sortedMoviesByUser, this.sortedMoviesByCalculator);
   }
 
+  getFormattedCriteria(movie: Movie): string {
+    if (this.sortedCriteria === "popolarità") {
+      return `${movie?.popularity.toFixed(0)} recensioni ricevute`;
+    } else{   
+      return `${movie?.release_date}`;
+    }  
+  }
+
+
   //Funzione per ordinare i film in base al criterio sortato.
-  sortMovies(movies: Movie[]) { 
+  sortMovies(movies: Movie[]): Movie[] { 
     if (this.sortedCriteria === "data d'uscita") {
       movies.sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
     } else if (this.sortedCriteria === "popolarità") {
@@ -53,7 +63,12 @@ export class GameResultsComponent implements OnInit {
       }
     }
     this.gameSessionPoints = count * 10;
-    this.rankService.addPointsUser(this.currentUser,this.currentUser.id,this.gameSessionPoints);
+    this.rankService.addPointsUser(this.gameSessionPoints);
+  }
+  
+
+  showCards(){
+    this.gameRepository.setStateTrue();
   }
 
   onClicked(id: number) {

@@ -21,6 +21,7 @@ export class ReviewService {
     movieId: 0,
     movieTitle: '',
     movieImg: '',
+    movieBackground:'',
     movieDescription: '',
     movieLanguage: '',
     movieReleaseDate: '',
@@ -74,8 +75,9 @@ export class ReviewService {
 
   addReview(rating: Review) {
     this.httpClient.post<any>(`${this.API_ROOT}/ratings/`, rating).subscribe({
-      next: (rating) => 
-        this.reviews.push(rating.data),
+      next: (rating) => {
+        this.reviews=[...this.reviews,rating.data]
+      },
         error: (error) => {
           console.error('Errore durante l\'inserimento della recensione:', error);
         console.log(this.review)}

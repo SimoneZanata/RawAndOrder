@@ -1,31 +1,30 @@
-<div class="card">
-    <div class="poster-container">
-      <img [src]="'https://image.tmdb.org/t/p/w342/'+ review.movieImg" [alt]="review.movieTitle" class="poster">
+<div class="card" [style.background-image]="'url(https://image.tmdb.org/t/p/original/' + review.movieBackground + ')'">
+  <div class="poster-container">
+    <img [src]="'https://image.tmdb.org/t/p/w342/'+ review.movieImg" [alt]="review.movieTitle" class="poster">
+  </div>
+  <div class="card-content">
+    <div class="info-container">
+      <h3 class="title">{{review.movieTitle }}</h3>
+      <p class="release-date">Data d'uscita: {{ review.movieReleaseDate }}</p>
+      <p class="release-date">Lingua Originale: {{ review.movieLanguage }}</p>
+      <div class="rating-container">
+        <span class="rating-text"> voto medio:</span>
+        <span class="rating-icon">&#9733;</span>
+        <span class="rating-value"> {{ review.movieVoteAverage }}/10.0</span>
+      </div>
     </div>
-    <div class="card-content">
-      <div class="info-container">
-        <h3 class="title">{{review.movieTitle }}</h3>
-        <p class="release-date">Data d'uscita: {{ review.movieReleaseDate }}</p>
-        <p class="release-date">Lingua Originale: {{ review.movieLanguage }}</p>
-        <div class="rating-container">
-          <span class="rating-text"> voto medio:</span>
-          <span class="rating-icon">&#9733;</span>
-          <span class="rating-value"> {{ review.movieVoteAverage }}/10.0</span>
-        </div>
-      </div>
-      <p class="overview">{{ review.movieDescription }}</p>
-  
-      <p class="alert alert-secondary mt-3">>Questo film e' stato recensito il {{review.timestamp}}</p>
-      
-      <div class="comment-container">
-        <ngb-rating [rate]="rating" [max]="10" (rateChange)="onRatingChange($event)"></ngb-rating>
-        <textarea class="comment-box" [(ngModel)]="comment" maxlength="160" (input)="onCommentChange($event)"></textarea>
-        <div class="buttons-container">
-          <button id="addToFavoritesBtn" class="comment-btn" [ngClass]="{'disabled-btn': !isFormValid}" 
-            [disabled]="!isFormValid" (click)="updateReview()">
-            Modifica la recensione
-          </button>
-        </div>
-      </div>
+    <br>
+    <p class="overview">{{ review.movieDescription }}</p>
 
-      
+    <div class="review-container">
+      <ngb-rating class="comment-rating" [rate]="rating" [max]="10" (rateChange)="onRatingChange($event)"></ngb-rating>
+      <textarea class="comment-box" [(ngModel)]="comment" maxlength="160" (input)="onCommentChange($event)"></textarea>
+      <div class="buttons-container">
+        <button id="addToFavoritesBtn" class="comment-btn" [ngClass]="{'disabled-btn': !isFormValid}"
+          [disabled]="!isFormValid" (click)="updateReview()">
+          Modifica la recensione
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

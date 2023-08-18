@@ -1,11 +1,7 @@
-<div
-  class="d-flex align-items-center justify-content-center"
-  style="height: 100vh"
->
+<div class="d-flex align-items-center justify-content-center" style="height: 100vh">
   <div class="register-card">
     <div class="wrap d-md-flex">
-      <div class="img col-12 col-md-6"></div>
-      <div class="col-12 col-md-6 p-4 p-md-5">
+      <div class="col-sm-12 col-md-7 p-5 p-md-6 my-7">
         <div class="d-flex">
           <div class="w-100">
             <h3 class="mb-4">Registrati</h3>
@@ -24,15 +20,11 @@
               id="name"
               #name="ngModel"
             />
-            <small
-              [style.visibility]="
-                name.invalid && (name.dirty || name.touched)
-                  ? 'visible'
-                  : 'hidden'
-              "
-              class="form-text text-danger"
-              >Campo obbligatorio</small
-            >
+            <div
+              [style.visibility]="name.invalid && (name.dirty || name.touched)? 'visible': 'hidden'"
+              class="form-text text-danger">
+              <span class="text">Campo obbligatorio</span>
+            </div>
           </div>
           <div class="form-group">
             <label class="label" for="email">eMail</label>
@@ -46,15 +38,11 @@
               id="email"
               #email="ngModel"
             />
-            <small
-              [style.visibility]="
-                email.invalid && (email.dirty || email.touched)
-                  ? 'visible'
-                  : 'hidden'
-              "
-              class="form-text text-danger"
-              >Campo obbligatorio</small
-            >
+            <div
+              [style.visibility]="email.invalid && (email.dirty || email.touched)? 'visible': 'hidden'"
+              class="form-text text-danger">
+              <span class="text">Campo obbligatorio</span>
+            </div>
           </div>
           
           <div class="form-group">
@@ -69,17 +57,14 @@
               placeholder="Password"
               #password="ngModel"
             />
-            <small
-              [style.visibility]="
-                password.invalid && (password.dirty || password.touched)
-                  ? 'visible'
-                  : 'hidden'
-              "
-              class="form-text text-danger"
-              >Campo obbligatorio</small
-            >
+            <div
+              [style.visibility]="password.invalid && (password.dirty || password.touched) ? 'visible' : 'hidden'"
+              class="form-text text-danger">
+              <span class="text">Campo obbligatorio</span>
+            </div>
           </div>
           <div class="form-group">
+            <div class="custom-button d-flex justify-content-center">
             <button
               type="submit"
               class="form-control btn btn-primary rounded submit px-3 mt-2"
@@ -87,10 +72,11 @@
               Registrati <!--manca un onClick emitter-->
             </button>
           </div>
+          </div>
         </form>
         <p class="text-center mt-3">
           Sei già iscritto?
-          <a data-toggle="tab" routerLink="/login">Accedi</a>
+          <a class="login" data-toggle="tab" routerLink="/login">Accedi</a>
         </p>
       </div>
     </div>

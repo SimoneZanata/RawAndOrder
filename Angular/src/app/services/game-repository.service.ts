@@ -7,6 +7,7 @@ import { Movie } from '../models/movie';
 export class GameRepositoryService {
   moviesSortedByUser: Movie[]=[];
   sortedCriteria: string='';
+  saveState:boolean=false;
 
   constructor() { 
     this.loadFromLocalStorage();
@@ -23,7 +24,12 @@ export class GameRepositoryService {
     if (storedCriteria) {
       this.sortedCriteria = storedCriteria;
     }
+    const storedState =localStorage.getItem('saveState');
+    if (storedState) {
+      this.saveState = JSON.parse(storedState);
+    }
   }
+
  
   setMoviesByUser(movies: Movie[]) {
     this.moviesSortedByUser = movies;
@@ -40,5 +46,17 @@ export class GameRepositoryService {
   getSortedCriteria(){
     return this.sortedCriteria;
   }
+
+  setStateFalse(){
+   this.saveState=false;
+   localStorage.setItem('saveState', JSON.stringify(this.saveState));
+  }
+
+  setStateTrue(){
+    this.saveState=true;
+    localStorage.setItem('saveState', JSON.stringify(this.saveState));
+  }
+
+
 }
 

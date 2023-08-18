@@ -1,17 +1,13 @@
-<div
-  class="d-flex align-items-center justify-content-center"
-  style="height: 100vh;"
->
+<div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
   <div class="login-card">
     <div class="wrap d-md-flex">
-      <div class="img col-12 col-md-6"></div>
-      <div class="col-12 col-md-6 p-4 p-md-5">
+      <div class="col-12 col-md-7 p-6 p-md-6 my-7">
         <div class="d-flex">
           <div class="w-100">
             <h3 class="mb-4">Accedi</h3>
           </div>
         </div>
-        <form #f="ngForm" (ngSubmit)="login(f)">
+         <form #f="ngForm" (ngSubmit)="login(f)">
           <div class="form-group">
             <label class="label" for="username">Username</label>
             <input
@@ -22,13 +18,11 @@
               placeholder="Username"
               required
               id="username"
-              #username="ngModel"
-            />
+              #username="ngModel"/>
             <div
               [style.visibility]="username.invalid && (username.dirty || username.touched) ? 'visible' : 'hidden'"
-              class="mt-1 small text-danger"
-            >
-              Campo obbligatorio
+              class="mt-1 small text-danger">
+            <span class="text">Campo obbligatorio</span>
             </div>
           </div>
           <div class="form-group">
@@ -41,16 +35,15 @@
               class="form-control"
               id="password"
               placeholder="Password"
-              #password="ngModel"
-            />
+              #password="ngModel"/>
             <div
             [style.visibility]="password.invalid && (password.dirty || password.touched) ? 'visible' : 'hidden'"
-              class="mt-1 small text-danger"
-            >
-              Campo obbligatorio
+              class="mt-1 small text-danger">
+            <span class="text">Campo obbligatorio</span>
             </div>
           </div>
           <div class="form-group">
+            <div class="custom-button d-flex justify-content-center">
             <button
               type="submit"
               class="form-control btn btn-primary rounded submit px-3 mt-2"
@@ -58,12 +51,12 @@
               Login
             </button>
           </div>
+        </div>
         </form>
         <p class="text-center mt-3">
           Non sei iscritto?
-          <a data-toggle="tab" routerLink="/register">Registrati</a>
-        </p>
-      </div>
+          <a class="register" data-toggle="tab" routerLink="/register">Registrati</a>
+        </p> 
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../models/user';
+import { User} from '../models/user';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -18,8 +18,8 @@ export class RankingsService {
     this.currentUser = JSON.parse(localStorage.getItem("user") || '') as User;
   }
 
-  addPointsUser(user: User, id: number, points: number) {
-    this.http.put<User>(`${this.springBootUrl}/${id}/${points}`, user).subscribe({
+  addPointsUser(points: number) {
+    this.http.put<User>(`${this.springBootUrl}/rankings/${this.currentUser.id}`,points).subscribe({
       next: (response) => {
         this.currentUser = response;
         console.log('Utente aggiornato', this.currentUser);

@@ -1,101 +1,97 @@
 .gameSessionPoints {
   color: #ff9900;
+  animation: glow 1.5s infinite; /* Applica l'animazione di glow */
 }
 
-.result{
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  font-family: 'Sen', sans-serif;
-  background-color: black;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.443);
+.movie-main{
+  box-shadow: 0px 20px 10px rgba(0, 0, 0, 0.443);
   color: white;
-}
-.movie-header{
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  font-family: 'Sen', sans-serif;
-  background-color: black;
-  padding: 20px;
+  padding: 30px;
   border-radius: 20px;
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.443);
-  color: white;
+  background-color: hsla(0, 3%, 7%, 0.769); /* Sfondo bianco molto trasparente */
+  background-blend-mode: darken;
+  background-image: url("/assets/images/RAW_ORDER.png");
+  background-size:cover;
 }
+
 
 .movie-list {
-  //margin-top: 40px;
+  margin: 0 auto 40px; /* Imposta il margine automatico a sinistra e destra */
+  max-width: 900px;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   justify-content: center;
   font-family: 'Sen', sans-serif;
-  background-color: #f9f9f9;
-  padding: 20px;
+  background-color: black;
+  padding: 30px;
   border-radius: 20px;
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.443);
+  color: white;
+  background-color: hsla(0, 3%, 7%, 0.769); /* Sfondo bianco molto trasparente */
+  background-blend-mode: darken;
+  background-image: url("/assets/images/Raggi.jpg");
+  box-shadow: 0px 20px 10px rgba(0, 0, 0, 0.443);
+  background-size:cover;
+
+  
 
   h4 {
     font-weight: bold;
     font-size: 24px;
     margin-bottom: 20px;
-    color: #333;
+    color: #ffffff;
 
   }
 
   li {
-    font-size: 18px;
-    margin-bottom: 10px;
-    transition: color 0.3s ease;
-    list-style: none;
+    font-size: 20px;
+    margin-bottom: 15px;
+    //transition: color 0.3s ease;
   }
 
-  .movie-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
+  
   .movie-title {
-    display: flex;
+    display:flex;
+    //justify-content: space-between; /* Aggiunto per separare titolo e criterio */
     align-items: center;
     position: relative;
   }
+  .movie-title .title {
+    opacity: 0.8;
+    text-align: left;
+    flex: 1; /* Aggiunto per occupare lo spazio disponibile */
+  }
+  .movie-title .criteria {
+    opacity: 0.8;
+    text-align: right;
+    flex: 1; 
+  }
+  .movie-title .win-title {
+    color: #ff8c00;
+    font-weight: bold;
+    animation: glow 1s infinite; /* Applica l'animazione di glow */
+    text-align: left;
+    flex: 1; /* Aggiunto per occupare lo spazio disponibile */
+  }
+  .movie-title .win-criteria {
+    color: #ff8c00;
+    font-weight: bold;
+    animation: glow 1s infinite; /* Applica l'animazione di glow */
+    text-align: right;
+    flex: 1; 
+  }
 
-  .icon-and-text {
+
+  .icon{
     display: flex;
     align-items: center;
 
     mat-icon {
       margin-left: 10px;
       transition: all 0.3s ease;
-    }
-
-    .icon-text {
-      visibility: hidden;
-      opacity: 0;
-      transition: all 0.3s ease;
-      white-space: nowrap;
-      background-color: #ffffff;
-      padding: 5px;
-      border-radius: 5px;
-      pointer-events: none;
-      margin-left: 10px;
-    }
-
-    &:hover .icon-text {
-      visibility: visible;
-      opacity: 1;
-      font-size: 15px;
     }
   }
 
@@ -105,24 +101,88 @@
   }
 
   .black-text {
-    color: #000000;
+    color: white;
     font-weight: bold;
   }
 }
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.8;
+   
+  }
+  50% {
+    opacity: 8;
+    text-shadow: 0 0 80px white; /* Cambia il colore e la dimensione del bagliore qui */
+  
+  }
+}
+
+.submit-button {
+  display: inline-block;
+  font-family: "Sen", sans-serif;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 10px;
+  background: #ff8c00;
+  
+  color: #fff;
+  border: 1.5px solid #eee;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  transform: scale(1.12);
+  background: #f7b733;
+  background: -webkit-linear-gradient(to right, #f7b733, #ff8c00, #f7b733);
+  background: linear-gradient(to right, #f7b733, #ff8c00, #f7b733);
+  transition: transform 0.3s ease-out, background-color 0.3s ease-out,
+    border-color 0.3s ease-out;
+}
+
 
 .movie-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-right: 20px;
 }
+
+.movie-header{
+  font-weight: bold;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  font-family: 'Sen', sans-serif;
+  //border:solid 1px rgb(255, 255, 255);
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  
+h3{
+  //font-weight: bold;
+}
+
+}
+
 
 .movie-card {
   width: calc(20% - 40px); 
-  background-color: #fff;
-  border-radius: 15px;
- transition: box-shadow 0.3s ease, transform 0.3s ease;
- //margin-bottom: 15px; 
- margin-left: 25px;
+  background-color: transparent;
+  border-radius: 45px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  
+  margin-bottom: 20px; 
+  margin-left: 30px;
+  margin-right: 5px;
 }
 
 .movie-card:hover {

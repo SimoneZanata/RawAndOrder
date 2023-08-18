@@ -27,6 +27,9 @@ const Review = db.define('ratings', {
   movieImg: {
     type: DataTypes.STRING
   },
+  movieBackground: {
+    type: DataTypes.STRING
+  },
   movieDescription: {
     type: DataTypes.STRING
   },
@@ -43,6 +46,7 @@ const Review = db.define('ratings', {
     type: DataTypes.DATE, 
     defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
   }
+
 }, {
   freezeTableName: true,
   timestamps: true

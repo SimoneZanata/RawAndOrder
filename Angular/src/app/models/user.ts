@@ -1,7 +1,6 @@
 export interface User {
   id: number;
   username: string;
-  password: string;
   email: string;
   points: number;
 }
@@ -12,12 +11,15 @@ export interface LoginDTO {
 }
 
 export interface RegisterDTO {
-  userId: number;
   username: string;
   password: string;
   email: string;
 }
-export interface UserUpdate {
+export interface UpdateUser {
   email: string;
   password: string;
+  id: number;
 }
+
+
+

@@ -1,48 +1,54 @@
-<div>
-  <div class="result">
-    <h4>Ecco la lista dei film ordinati per {{ sortedCriteria }}:</h4>
+<div *ngIf="!gameRepository.saveState">
+  <div class="movie-list">
+    <h4>Ecco la lista dei film ordinati per: {{ sortedCriteria | uppercase }}</h4>
     <div *ngIf="gameSessionPoints > 0">
-      <h6 class="points">- Complimenti!! Hai ottenuto un totale di
+      <h5 class="points">- Complimenti!! Hai ottenuto un totale di
         <span class="points-highlight" [ngClass]="{gameSessionPoints}">{{gameSessionPoints}}</span> punti! -
-      </h6>
+      </h5>
     </div>
-  
-  <div *ngIf="gameSessionPoints == 0">
-    <h6>- Che sfortuna!! Non hai ottenuto nessun punto! -</h6>
+    <div *ngIf="gameSessionPoints == 0">
+      <h5>- Che sfortuna!! Non hai ottenuto nessun punto! -</h5>
+    </div>
+
+    <br><br>
+    
+      <ul class="order-list">
+        <li *ngFor="let movie of sortedMoviesByCalculator">
+          <div *ngIf="movie.catch" class="movie-title correct">
+            <span class="win-title">{{ movie?.title }}</span>
+            <span class="win-criteria">{{ getFormattedCriteria(movie) }}</span>
+            <span class="icon">
+              <mat-icon class="orange-text">check_circle</mat-icon>
+            </span>
+          </div>
+          <div *ngIf="!movie.catch" class="movie-title incorrect">
+            <span class="title">{{ movie?.title }}</span>
+            <span class="criteria">{{ getFormattedCriteria(movie) }}</span>
+            <span class="icon">
+              <mat-icon class="black-text">cancel</mat-icon>
+            </span>
+          </div>
+        </li>
+      </ul>
+      <button class="submit-button" (click)="showCards()">Continua</button>
+    
   </div>
-</div> 
 </div>
-<br><br>
-<div class="movie-list">
-  <ul class="order-list">
-    <li *ngFor="let movie of sortedMoviesByCalculator" class="movie-item">
-      <div *ngIf="movie.catch" class="movie-title correct">
-        {{ movie?.title }}
-        <span class="icon-and-text">
-          <mat-icon class="orange-text">check_circle</mat-icon>
-          <span class="icon-text">Indovinato</span>
-        </span>
+
+
+<div *ngIf="gameRepository.saveState">
+  <div class="movie-main">
+  <div class="movie-header">
+    <h2>Scegli un poster per aggiungere una recensione, fornire un voto e condividere un commento.</h2>
+  </div>
+  <div class="movie-container">
+    <ng-container *ngFor="let movie of sortedMoviesByCalculator">
+      <div class="movie-card">
+        <div class="shadow-sm py-0 text-center">
+          <tnv-game-results-item (clicked)="onClicked($event)" [movie]="movie"></tnv-game-results-item>
+        </div>
       </div>
-      <div *ngIf="!movie.catch" class="movie-title incorrect">
-        {{ movie?.title }}
-        <span class="icon-and-text">
-          <mat-icon class="black-text">cancel</mat-icon>
-          <span class="icon-text">Sbagliato</span>
-        </span>
-      </div>
-    </li>
-  </ul>
+    </ng-container>
+  </div>
 </div>
-<br>
-<div class="movie-list">
-  <h4>Premi su una locandina per aggiungere il film ai preferiti, dare un voto e lasciare un commento.</h4>
-</div>
-<div class="movie-container">
-  <ng-container *ngFor="let movie of sortedMoviesByCalculator">
-    <div class="movie-card">
-      <div class=" shadow-sm py-0 text-center">
-        <tnv-game-results-item (clicked)="onClicked($event)" [movie]="movie"></tnv-game-results-item>
-      </div>
-    </div>
-  </ng-container>
 </div>

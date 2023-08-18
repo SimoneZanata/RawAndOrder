@@ -29,6 +29,9 @@ export class ReviewsMainComponent implements OnChanges{
 
   onDeleteClicked(id: number){
     this.reviewService.deleteReview(id);
+    setTimeout(() => {
+      alert('Recensione cancellata con successo');
+    }, 100);
   }
 
   onEditClicked(movieId: number) {
