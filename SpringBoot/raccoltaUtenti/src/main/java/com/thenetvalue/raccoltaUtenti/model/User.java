@@ -1,8 +1,12 @@
 package com.thenetvalue.raccoltaUtenti.model;
 
+import com.thenetvalue.raccoltaUtenti.model.authority.Authority;
+import com.thenetvalue.raccoltaUtenti.model.response.ResponseUser;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -94,4 +98,21 @@ public class User {
             authority.setUsername(this.username);
             this.getAuthorities().add(authority);
     }
+    public ResponseUser elaborateForResponse(){
+        ResponseUser responseUser=new ResponseUser();
+        responseUser.setId(this.getId());
+        responseUser.setUsername(this.getUsername());
+        responseUser.setEmail(this.getEmail());
+        responseUser.setPoints(this.getPoints());
+        return responseUser;
+    }
+
+    public static List<ResponseUser> ElaborateListForResponse(Iterable <User> users){
+        List<ResponseUser> responseUsers=new ArrayList<>();
+        for(User user: users){
+            responseUsers.add(user.elaborateForResponse());
+        }
+        return responseUsers;
+    }
+
 }

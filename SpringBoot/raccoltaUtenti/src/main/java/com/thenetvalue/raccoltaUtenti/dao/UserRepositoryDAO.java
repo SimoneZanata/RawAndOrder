@@ -16,5 +16,4 @@ public interface UserRepositoryDAO extends CrudRepository<User, Integer> {
 
     public User findByUsername(String username);
 
-
 }
