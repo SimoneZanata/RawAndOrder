@@ -24,7 +24,7 @@ export class ReviewsMainComponent implements OnChanges{
  
   
   ngOnChanges(): void { 
-    this.reviews;  
+    console.log(this.reviews);  
   }
 
   onDeleteClicked(id: number){

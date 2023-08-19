@@ -13,7 +13,7 @@ export class PageReviewsComponent{
   currentUser: User;
  
   constructor (public reviewsService:ReviewService,public authService:AuthService){
-   this.currentUser= this.authService.getCurrentUser();   
+  this.currentUser= this.authService.getCurrentUser();   
    this.reviewsService.getReviews(this.currentUser.id);
   }
  

@@ -9,7 +9,7 @@ import { Movie } from '../models/movie';
 export class DbmoviesService {
 
   private movieUrl='https://api.themoviedb.org/3/movie';
-  private moviesListUrl = 'https://api.themoviedb.org/3/account/20163434/favorite/movies'; 
+  private moviesListUrl = 'https://api.themoviedb.org/3/movie/popular?page=1'; 
   private accessToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YWZkMTQwMTIyMjk5NTJjYmM0MTdhODlmMTRlN2RiNSIsInN1YiI6IjY0YjVhZTcyMTIxOTdlMDExY2FhY2ZiNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OWEBq_hwChC-lORkrz1jciSgvD313Y5L9nuwPpvtGEI';
   
   movies:Movie[]=[];
@@ -36,21 +36,30 @@ export class DbmoviesService {
 
   getMovies() {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.accessToken}`);
-    return this.http.get<Movie[]>(this.moviesListUrl, { headers }).subscribe({
-      next: (res:any) => {
-        this.movies = (res.results);
-        console.log('film recuperati:', this.movies);
-      },
-      error: (error : any) => {
-        console.error('Si è verificato un errore nel recupero dei film:', error);
-      }
-    });
-  };
+    const allMovies: Movie[] = []; // Aggiunto array per contenere tutti i film
+    const totalPage=3;
+    for (let page = 1; page <= totalPage; page++) {
+      const pageUrl = `https://api.themoviedb.org/3/movie/popular?page=${page}`;
+      this.http.get<Movie[]>(pageUrl, { headers }).subscribe({
+        next: (res: any) => {
+          const movies = res.results;
+          allMovies.push(...movies);
+          if (page === totalPage) {
+            this.movies = allMovies;
+          }
+        },
+        error: (error: any) => {
+          console.error(`Si è verificato un errore nel recupero dei film dalla pagina ${page}:`, error);
+        }
+      });
+    }
+  }
   
 
   getMovie(id: number) {
+    this.movie = Object.assign({});
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.accessToken}`);
-    return this.http.get<Movie>(`${this.movieUrl}/${id}`, { headers }).subscribe({
+    this.http.get<Movie>(`${this.movieUrl}/${id}`, { headers }).subscribe({
       next: (res: Movie) => {
         this.movie = res;
         console.log('film recuperato\'API:', this.movie);

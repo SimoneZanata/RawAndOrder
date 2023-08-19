@@ -12,22 +12,21 @@ import { UpdateUser, User } from 'src/app/models/user';
 export class EditProfileComponent {
 
 
-  constructor(private authService: AuthService, private router:Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
 
   updateUser(form: NgForm) {
     form.control.markAllAsTouched();
     if (form.valid) {
-      const updatedUser : UpdateUser = form.value; 
-      updatedUser.id= this.authService.getCurrentUser().id;
-      console.log(updatedUser);
+      const updatedUser: UpdateUser = form.value;
+      updatedUser.id = this.authService.getCurrentUser().id;
       this.authService.updateProfile(updatedUser).subscribe({
         next: (user) => {
           localStorage.setItem("user", JSON.stringify(user));
-            this.router.navigateByUrl("/profile");  
-            setTimeout(() => {
-              alert('Profilo aggiornato correttamente');
-            }, 200);
+          this.router.navigateByUrl("/profile");
+          setTimeout(() => {
+            alert('Profilo aggiornato correttamente');
+          }, 200);
         },
         error: (error) => {
           console.error('Errore durante l\'aggiornamento del profilo', error);
@@ -35,5 +34,4 @@ export class EditProfileComponent {
       });
     }
   }
-  
 }

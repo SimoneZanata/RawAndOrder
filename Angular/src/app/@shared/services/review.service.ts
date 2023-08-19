@@ -104,7 +104,7 @@ export class ReviewService {
 
 
   deleteReview(idRating: number) {
-    this.httpClient.delete(`${this.API_ROOT}/ratings/${idRating}`).subscribe({
+   this.httpClient.delete(`${this.API_ROOT}/ratings/${idRating}`).subscribe({
       next:  () => {this.reviews = this.reviews.filter(x => x.idRating !== idRating)
       },
         error: (error) => {

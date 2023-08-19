@@ -15,6 +15,9 @@ export class LogoutComponent implements OnInit {
   }
 
   logout() {
+    localStorage.removeItem('moviesSortedByUser');
+    localStorage.removeItem('sortedCriteria');
+    localStorage.removeItem('saveState');
     this.authService.logout();
     this.router.navigateByUrl("/login");
   }

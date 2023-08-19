@@ -24,6 +24,7 @@ export class GameSessionComponent implements OnChanges {
   isSubmitPressed: boolean = false;
 
   constructor(public dbmoviesService: DbmoviesService, private gameRepository: GameRepositoryService, private router: Router) {
+    this.movies=[];
   }
 
 
