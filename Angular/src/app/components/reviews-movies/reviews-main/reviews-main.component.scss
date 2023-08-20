@@ -18,7 +18,7 @@
   }
   50% {
     opacity: 8;
-    text-shadow: 0 0 80px white; /* Cambia il colore e la dimensione del bagliore qui */
+    text-shadow: 0 0 80px white; 
   
   }
 }
@@ -27,15 +27,13 @@
 .movie-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  margin-right: 20px;
+  justify-content: left;
 }
 
 
 
 .movie-header{
   font-family: 'Sen', sans-serif;
-  //font-weight: bold;
   margin-bottom: 60px;
   display: flex;
   flex-direction: column;

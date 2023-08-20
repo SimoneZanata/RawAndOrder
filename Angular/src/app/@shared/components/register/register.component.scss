@@ -1,14 +1,14 @@
 .register-card {
   color: white;
   background-image: url("/assets/images/WeShort.jpeg");
-  background-color: hsla(0, 0%, 3%, 0.769); /* Sfondo bianco molto trasparente */
+  background-color: hsla(0, 0%, 3%, 0.769);
   background-blend-mode: darken;
   background-position: center center;
-  width: 680px; 
+  width: 680px;
   height: 560px;
   font-family: "Sen", sans-serif;
   font-size: 16px;
-  padding: 20px ;
+  padding: 20px;
   border: 1px solid #ddd;
   border-radius: 15px;
   align-items: center;
@@ -16,18 +16,18 @@
   transition: transform 0.3s ease;
   margin-bottom: 300px;
 
-  h3{ 
+  h3 {
     font-weight: bold;
     font-size: 30px;
     text-align: center;
   }
 }
 
-.login{
+.login-link{
   color: #ddd;
 }
 
-.login:hover{
+.login-link:hover {
   color: #ff8c00;
 }
 
@@ -36,27 +36,23 @@
 }
 
 .label {
- 
   align-items: center;
   font-size: 14px;
-
   font-weight: bold;
-  margin-bottom:11px;
+  margin-bottom: 11px;
 }
 
-.text{
+.text {
   font-size: 13px;
-  color:#ff8c00;
+  color: #ff8c00;
 }
 
 input {
   align-items: center;
   color: white;
-  //margin-left: -28px;
   width: 280px;
   padding: 8px;
   font-size: 18px;
-  
   border-radius: 5px;
   background-color: transparent;
 }
@@ -71,16 +67,15 @@ input:focus {
 .custom-button {
   cursor: pointer;
   margin-top: 10px;
+
   button {
-    
-    //margin-left: 18px;
     background-color: #ff8c00;
     width: 130px;
     color: black;
     border: none;
     padding: 10px;
     border-radius: 5px;
-  
+
 
     &:hover {
       color: rgb(255, 255, 255);
@@ -100,13 +95,13 @@ input:focus {
 
 
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 768px) {
 
-.login-card {
-  width: 400px;
-}
-.img {
-height: 200px;
+  .login-card {
+    width: 400px;
+  }
+
+  .img {
+    height: 200px;
   }
 }
-

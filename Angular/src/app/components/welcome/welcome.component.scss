@@ -1,7 +1,7 @@
 .card {
     display: flex;
     border-radius: 20px;
-    background-color: hsla(0, 4%, 10%, 0.769); /* Sfondo bianco molto trasparente */
+    background-color: hsla(0, 4%, 10%, 0.769); 
     background-blend-mode: darken;
     background-size: cover;
     background-image: url("/assets/images/Copia.png");
@@ -22,7 +22,7 @@
 .highlight {
     font-weight: bold;
     color:#ff8c00;
-    animation: glow 2s infinite; /* Applica l'animazione di glow */
+    animation: glow 2s infinite; 
 }
 
 .row {
@@ -67,7 +67,7 @@ ol, p {
     }
     50% {
       opacity: 8;
-      text-shadow: 0 0 10px white; /* Cambia il colore e la dimensione del bagliore qui */
+      text-shadow: 0 0 10px white; 
     
     }
 }

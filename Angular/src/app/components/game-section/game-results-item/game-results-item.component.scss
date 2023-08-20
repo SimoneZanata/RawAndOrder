@@ -1,7 +1,4 @@
-
-  
-
-  .card-img-top {
+ .card-img-top {
     width: 100%; 
     height:100%; 
     box-shadow: 0px 0px 12px rgb(255, 255, 255); 
@@ -20,9 +17,9 @@
 
   @keyframes glow-box {
     0%, 100% {
-      box-shadow: 0 0 3px white; /* Cambia il colore e la dimensione del bagliore qui */
+      box-shadow: 0 0 3px white; 
     }
     50% {
-      box-shadow: 0 0 13px white; /* Cambia il colore e la dimensione del bagliore qui */
+      box-shadow: 0 0 13px white;
     }
   }

@@ -1,6 +1,6 @@
 .gameSessionPoints {
   color: #ff9900;
-  animation: glow 1.5s infinite; /* Applica l'animazione di glow */
+  animation: glow 1.5s infinite;
 }
 
 .movie-main{
@@ -8,7 +8,7 @@
   color: white;
   padding: 30px;
   border-radius: 20px;
-  background-color: hsla(0, 3%, 7%, 0.769); /* Sfondo bianco molto trasparente */
+  background-color: hsla(0, 3%, 7%, 0.769); 
   background-blend-mode: darken;
   background-image: url("/assets/images/RAW_ORDER.png");
   background-size:cover;
@@ -16,7 +16,7 @@
 
 
 .movie-list {
-  margin: 0 auto 40px; /* Imposta il margine automatico a sinistra e destra */
+  margin: 0 auto 40px; 
   max-width: 900px;
   margin-bottom: 40px;
   display: flex;
@@ -30,7 +30,7 @@
   border-radius: 20px;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.443);
   color: white;
-  background-color: hsla(0, 3%, 7%, 0.769); /* Sfondo bianco molto trasparente */
+  background-color: hsla(0, 3%, 7%, 0.769); 
   background-blend-mode: darken;
   background-image: url("/assets/images/Raggi.jpg");
   box-shadow: 0px 20px 10px rgba(0, 0, 0, 0.443);
@@ -49,20 +49,18 @@
   li {
     font-size: 20px;
     margin-bottom: 15px;
-    //transition: color 0.3s ease;
   }
 
   
   .movie-title {
     display:flex;
-    //justify-content: space-between; /* Aggiunto per separare titolo e criterio */
     align-items: center;
     position: relative;
   }
   .movie-title .title {
     opacity: 0.8;
     text-align: left;
-    flex: 1; /* Aggiunto per occupare lo spazio disponibile */
+    flex: 1;
   }
   .movie-title .criteria {
     opacity: 0.8;
@@ -72,14 +70,13 @@
   .movie-title .win-title {
     color: #ff8c00;
     font-weight: bold;
-    animation: glow 1s infinite; /* Applica l'animazione di glow */
-    text-align: left;
-    flex: 1; /* Aggiunto per occupare lo spazio disponibile */
+    animation: glow 1s infinite; 
+    flex: 1;
   }
   .movie-title .win-criteria {
     color: #ff8c00;
     font-weight: bold;
-    animation: glow 1s infinite; /* Applica l'animazione di glow */
+    animation: glow 1s infinite;
     text-align: right;
     flex: 1; 
   }
@@ -113,7 +110,7 @@
   }
   50% {
     opacity: 8;
-    text-shadow: 0 0 80px white; /* Cambia il colore e la dimensione del bagliore qui */
+    text-shadow: 0 0 80px white;
   
   }
 }
@@ -162,15 +159,9 @@
   text-align: center;
   justify-content: center;
   font-family: 'Sen', sans-serif;
-  //border:solid 1px rgb(255, 255, 255);
   border-radius: 20px;
   padding: 20px;
-  color: white;
-  
-h3{
-  //font-weight: bold;
-}
-
+  color: white;  
 }
 
 

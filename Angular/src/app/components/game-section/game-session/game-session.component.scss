@@ -1,7 +1,3 @@
-.header {
- // margin-bottom: 20px;
-}
-
 .container {
   display: flex;
   flex-direction: column;
@@ -59,7 +55,7 @@
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   font-size: 18px;
   color: #ff8c00;
-  animation: glow-box 1.5s infinite; /* Applica l'animazione di glow */
+  animation: glow-box 1.5s infinite;
 }
 
 .example-box:hover {
@@ -110,10 +106,10 @@
 
 @keyframes glow-box {
   0%, 100% {
-    box-shadow: 0 0 10px white; /* Cambia il colore e la dimensione del bagliore qui */
+    box-shadow: 0 0 10px white;
   }
   50% {
-    box-shadow: 0 0 15px white; /* Cambia il colore e la dimensione del bagliore qui */
+    box-shadow: 0 0 15px white; 
   }
 }
 
@@ -124,7 +120,7 @@
   }
   50% {
     opacity: 8;
-    text-shadow: 0 0 80px white; /* Cambia il colore e la dimensione del bagliore qui */
+    text-shadow: 0 0 80px white;
   
   }
 }

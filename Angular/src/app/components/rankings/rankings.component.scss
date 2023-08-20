@@ -10,7 +10,7 @@
 
 .movie-list {
   background-image: url("/assets/images/oscar.jpg");
-  background-color: hsla(0, 5%, 4%, 0.769); /* Sfondo bianco molto trasparente */
+  background-color: hsla(0, 5%, 4%, 0.769); 
   background-blend-mode: darken;
   font-family: 'Sen', sans-serif;
   padding: 30px;
@@ -40,7 +40,7 @@
   th {
     padding: 15px;
 
-    background-color: hsla(30, 100%, 54%, 0.76); /* Sfondo bianco molto trasparente */
+    background-color: hsla(30, 100%, 54%, 0.76);
   
   }
 

@@ -1,7 +1,7 @@
 .card {
   display: flex;
   border-radius: 8px;
-  background-color: hsla(0, 0%, 9%, 0.769); /* Sfondo bianco molto trasparente */
+  background-color: hsla(0, 0%, 9%, 0.769);
   background-blend-mode: darken;
   background-size: cover;
   background-position: center;
@@ -37,7 +37,6 @@
 }
 
 .title {
- // margin-inline: 300px;
   font-size: 40px;
   font-weight: bold;
   color: white; 
@@ -82,6 +81,7 @@ color: #ff8c00;
 .comment-rating {
   color: #ff8c00; 
   font-size: 22px;
+  animation: glow 1s infinite;
 }
 
 .comment-box {
@@ -114,8 +114,6 @@ color: #ff8c00;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
-
-
 
 .comment-btn:hover {
   background-color: #ffa64d;
@@ -160,13 +158,6 @@ color: #ff8c00;
   opacity: 1;
 }
 
-.rating-user{
-  font-size: 18px;
-  color: #ff8c00;
-  margin-bottom: 0px;
-  opacity: 1;
-}
-
 .disabled-btn {
   color: #1b1b1b;
   background-color: #ccc;
@@ -179,7 +170,6 @@ color: #ff8c00;
   animation: none;
 }
 
-
 .rating-container {
   display: flex;
   align-items: center;
@@ -190,15 +180,6 @@ color: #ff8c00;
   margin-right: 10px;
   color: #ff8c00;
 }
-
-.alert {
-  font-size: 18px;
-  width: 770px;
-  height: 60px;
-  color: #333;
-}
-
-
 
 
 @media screen and (max-width: 600px) {
@@ -240,24 +221,16 @@ color: #ff8c00;
   }
   50% {
     opacity: 1;
-    text-shadow: 0 0 5px white; /* Cambia il colore e la dimensione del bagliore qui */
+    text-shadow: 0 0 5px white; 
   
   }
 }
 @keyframes glow-box {
   0%, 100% {
-    box-shadow: 0 0 5px white; /* Cambia il colore e la dimensione del bagliore qui */
+    box-shadow: 0 0 5px white;
   }
   50% {
-    box-shadow: 0 0 11px white; /* Cambia il colore e la dimensione del bagliore qui */
+    box-shadow: 0 0 11px white; 
   }
 }
 
-
-
-.comment-box{
-  animation: glow-box 1s infinite; /* Applica l'animazione di glow */
-}
-.comment-rating {
-  animation: glow 1s infinite; /* Applica l'animazione di glow */
-}

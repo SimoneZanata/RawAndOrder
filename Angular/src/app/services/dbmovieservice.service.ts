@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Movie } from '../models/movie';
 
 @Injectable({
@@ -9,7 +8,6 @@ import { Movie } from '../models/movie';
 export class DbmoviesService {
 
   private movieUrl='https://api.themoviedb.org/3/movie';
-  private moviesListUrl = 'https://api.themoviedb.org/3/movie/popular?page=1'; 
   private accessToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YWZkMTQwMTIyMjk5NTJjYmM0MTdhODlmMTRlN2RiNSIsInN1YiI6IjY0YjVhZTcyMTIxOTdlMDExY2FhY2ZiNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OWEBq_hwChC-lORkrz1jciSgvD313Y5L9nuwPpvtGEI';
   
   movies:Movie[]=[];
@@ -36,7 +34,7 @@ export class DbmoviesService {
 
   getMovies() {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.accessToken}`);
-    const allMovies: Movie[] = []; // Aggiunto array per contenere tutti i film
+    const allMovies: Movie[] = [];
     const totalPage=3;
     for (let page = 1; page <= totalPage; page++) {
       const pageUrl = `https://api.themoviedb.org/3/movie/popular?page=${page}`;

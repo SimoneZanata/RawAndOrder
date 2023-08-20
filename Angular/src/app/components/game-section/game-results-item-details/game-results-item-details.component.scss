@@ -1,7 +1,7 @@
 .card {
   display: flex;
   border-radius: 8px;
-  background-color: hsla(0, 0%, 9%, 0.769); /* Sfondo bianco molto trasparente */
+  background-color: hsla(0, 0%, 9%, 0.769); 
   background-blend-mode: darken;
   background-size: cover;
   background-position: center;
@@ -37,7 +37,6 @@
 }
 
 .title {
- // margin-inline: 300px;
   font-size: 40px;
   font-weight: bold;
   color: white; 
@@ -55,18 +54,18 @@
   font-size: 18px;
   color: white; 
   margin-bottom: 4px;
-  
 }
 
 
 .comment{
 color: #ff8c00;
+font-size: 18px;
 }
 
 
 .comment-text{
-  font-style: italic;
-  font-size: 18px;
+ font-style: italic;
+ font-size: 18px;
  max-width: 800px;
  color: white;
 }
@@ -81,6 +80,7 @@ color: #ff8c00;
 }
 
 .comment-rating {
+  animation: glow 1s infinite;
   color: #ff8c00; 
   font-size: 22px;
 }
@@ -97,6 +97,7 @@ color: #ff8c00;
   background-color: transparent; 
   color: white; 
   resize: none;
+  animation: glow-box 1s infinite;
 }
 
 .comment-box:focus-visible{
@@ -197,16 +198,6 @@ color: #ff8c00;
   color: #ff8c00;
 }
 
-.alert {
-  font-size: 18px;
-  width: 770px;
-  height: 60px;
-  color: #333;
-}
-
-
-
-
 @media screen and (max-width: 600px) {
   .card-content {
     flex-direction: column;
@@ -246,24 +237,16 @@ color: #ff8c00;
   }
   50% {
     opacity: 1;
-    text-shadow: 0 0 5px white; /* Cambia il colore e la dimensione del bagliore qui */
+    text-shadow: 0 0 5px white; 
   
   }
 }
 @keyframes glow-box {
   0%, 100% {
-    box-shadow: 0 0 5px white; /* Cambia il colore e la dimensione del bagliore qui */
+    box-shadow: 0 0 5px white; 
   }
   50% {
-    box-shadow: 0 0 11px white; /* Cambia il colore e la dimensione del bagliore qui */
+    box-shadow: 0 0 11px white; 
   }
 }
 
-
-
-.comment-box{
-  animation: glow-box 1s infinite; /* Applica l'animazione di glow */
-}
-.comment-rating {
-  animation: glow 1s infinite; /* Applica l'animazione di glow */
-}

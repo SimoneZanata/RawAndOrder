@@ -1,23 +1,21 @@
-
-    <div class="image-container" (click)="imgClick()">
-      <img [src]="'https://image.tmdb.org/t/p/w220_and_h330_face/' + review.movieImg"
-        [alt]="review.movieTitle" class="card-img-top">
-      <div class="card-menu-container">
-        <mat-menu #menu="matMenu">
-          <button class="delete-button" mat-menu-item (click)="deleteClick()">
-            <i class="fas fa-trash-alt"></i> Delete
-          </button>
-          <button mat-menu-item (click)="editClick()">
-            <i class="fas fa-edit"></i> Edit
-          </button>
-        </mat-menu>
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu" (click)="$event.stopPropagation()">
-          <i class="fas fa-ellipsis-v"></i>
-        </button>
-      </div>
-    </div>
-    <br>
-    <div class="movie-title">
-      {{review.movieTitle}}
-    </div>
-
+<div class="image-container" (click)="imgClick()">
+  <img [src]="'https://image.tmdb.org/t/p/w220_and_h330_face/' + review.movieImg" [alt]="review.movieTitle"
+    class="card-img-top">
+  <div class="card-menu-container">
+    <mat-menu #menu="matMenu">
+      <button class="button" mat-menu-item (click)="deleteClick()">
+        <i class="fas fa-trash-alt"></i> Delete
+      </button>
+      <button class="button" mat-menu-item (click)="editClick()">
+        <i class="fas fa-edit"></i> Edit
+      </button>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu" (click)="$event.stopPropagation()">
+      <i class="fas fa-ellipsis-v"></i>
+    </button>
+  </div>
+</div>
+<br>
+<div class="movie-title">
+  {{review.movieTitle}}
+</div>

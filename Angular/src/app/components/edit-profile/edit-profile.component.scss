@@ -6,7 +6,7 @@ h2 {
 .container {
   color: white;
   background-image: url("/assets/images/cinema-2-9.jpg");
-  background-color: hsla(0, 0%, 0%, 0.769); /* Sfondo bianco molto trasparente */
+  background-color: hsla(0, 0%, 0%, 0.769);
   background-blend-mode: darken;
   display: flex;
   flex-direction: column;
@@ -52,7 +52,6 @@ input {
   margin: 0 auto;
   padding: 8px;
   font-size: 18px;
-  
   border-radius: 5px;
   background-color: transparent;
 }

@@ -12,13 +12,14 @@ export class RankingsService {
   springBootUrl =
     'http://localhost:8080/users';
   users: User[] = [];
-  currentUser: User;
+  currentUser!: User;
 
   constructor(private http: HttpClient) {
-    this.currentUser = JSON.parse(localStorage.getItem("user") || '') as User;
+    
   }
 
   addPointsUser(points: number) {
+    this.currentUser = JSON.parse(localStorage.getItem("user") || '') as User;
     this.http.put<User>(`${this.springBootUrl}/rankings/${this.currentUser.id}`,points).subscribe({
       next: (response) => {
         this.currentUser = response;
