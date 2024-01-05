@@ -39,14 +39,4 @@ public class FailedAuthFilter extends OncePerRequestFilter {
         response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         response.getWriter().write("An error occurred while processing the request.");
     }
-
-    private void handleAuthenticationFailure(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        // Annulla il cookie XSRF-TOKEN
-        Cookie[] cookies = request.getCookies();
-            for (Cookie cookie : cookies) {
-                 cookie.setMaxAge(0); // Imposta il tempo di vita del cookie a zero per annullarlo
-                 response.addCookie(cookie);
-            }
-        }
-
 }

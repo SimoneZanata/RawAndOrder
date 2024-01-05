@@ -3,6 +3,7 @@ import com.thenetvalue.usersManagement.security.filters.*;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -24,7 +25,6 @@ public class SecurityConfiguration {
         CsrfTokenRequestAttributeHandler requestHandler = new CsrfTokenRequestAttributeHandler();
         requestHandler.setCsrfRequestAttributeName("_csrf");
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
-
                 .cors(corsCustomizer -> corsCustomizer.configurationSource(request -> {
                     CorsConfiguration config = new CorsConfiguration();
                     config.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
@@ -43,23 +43,10 @@ public class SecurityConfiguration {
                 .addFilterAfter(new FailedAuthFilter(), BasicAuthenticationFilter.class)
                 .addFilterAfter(new JWTTokenGeneratorFilter(), BasicAuthenticationFilter.class)
                 .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
-
                 .authorizeHttpRequests((requests)->requests
                         .requestMatchers("/users/**").hasRole("USER")
                         .requestMatchers("/users/register").permitAll())
-
-                /** Configurazione di HTTP Basic Authentication con i valori di default*/
-                .httpBasic((basic) -> basic
-                        .addObjectPostProcessor(new ObjectPostProcessor<BasicAuthenticationFilter>() {
-                            @Override
-                            public <O extends BasicAuthenticationFilter> O postProcess(O filter) {
-                                filter.setSecurityContextRepository(new HttpSessionSecurityContextRepository());
-                                return filter;
-                            }
-                        })
-                );
-
-        /** Costruzione e restituzione del filtro di sicurezza*/
+                .httpBasic(Customizer.withDefaults());
         return http.build();
     }
     @Bean

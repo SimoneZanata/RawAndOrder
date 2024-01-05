@@ -1,5 +1,4 @@
 package com.thenetvalue.usersManagement.security.filters;
-
 import com.thenetvalue.usersManagement.security.constants.SecurityConstants;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
