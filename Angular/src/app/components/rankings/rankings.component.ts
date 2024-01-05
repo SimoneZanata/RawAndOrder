@@ -16,22 +16,19 @@ import { RankingsService } from 'src/app/services/rankings.service';
   styleUrls: ['./rankings.component.scss']
 })
 export class RankingsComponent implements OnChanges {
-  springBootUrl = 
-  'http://localhost:8080/users';
+
   @Input() users: User[] =[];
   sortKey = 'points';
-  sortDesc = true;
+  sortDesc = false;
+  
 
-  constructor(private rankService:RankingsService) {}
+  constructor(private rankingsService: RankingsService) {}
 
   ngOnChanges(): void {
+    this.sortDesc = false;
     this.sortUsers();
   }
 
-  AllUsers(){
-    this.rankService.getAllUsers()
-  }
-  
   sortUsers() {
     this.sortDesc = !this.sortDesc;
     this.users = this.users?.sort((b: any, a: any) => {

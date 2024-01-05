@@ -63,7 +63,7 @@ export class GameResultsComponent implements OnInit {
       }
     }
     this.gameSessionPoints = count * 10;
-    this.rankService.addPointsUser(this.gameSessionPoints);
+    this.rankService.updatePointsUser(this.gameSessionPoints);
   }
   
 

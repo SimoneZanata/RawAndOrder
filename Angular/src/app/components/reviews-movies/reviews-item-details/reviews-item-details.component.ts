@@ -10,21 +10,7 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./reviews-item-details.component.scss']
 })
 export class ReviewsItemDetailsComponent implements OnChanges {
-  @Input()  review: Review = {
-    idRating: 0,
-    userId: 0,
-    ratingStars: 0,
-    textComment: '',
-    timestamp: new Date(),
-    movieId: 0,
-    movieTitle: '',
-    movieImg: '',
-    movieBackground:'',
-    movieDescription: '',
-    movieLanguage: '',
-    movieReleaseDate: '',
-    movieVoteAverage: 0,
-  };
+  @Input()  review: Review ={} as Review;
   movieId: number=0;
   currentUser!: User;
   comment: string = this.review.textComment;

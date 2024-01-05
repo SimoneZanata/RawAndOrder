@@ -1,10 +1,15 @@
+.navbar-dark .navbar-text {
+  font-size: 25px;
+  margin-right: 20px;
+}
+
 .navbar-dark .navbar-nav .nav-link {
   color: white;
   font-family: "Sen", sans-serif;
   display: flex;
   align-items: center;
 
-  mat-icon {
+  .mat-icon {
     color: white;
   }
 
@@ -15,36 +20,47 @@
     color: white;
     transition: max-width 0.3s ease-out;
   }
+
+  &:hover {
+    cursor: pointer;
+
+    span {
+      max-width: 200px;
+    }
+
+    .navbar-text {
+      font-size: 23px;
+    }
+
+    .icon-login-active {
+      color: rgba(226, 254, 14, 0.886);
+    }
+
+    .icon-registration-active {
+      color: rgb(15, 244, 15);
+    }
+
+    .icon-book-active {
+      color: #c0c0c0;
+    }
+
+    .icon-games-active {
+      color: #8cf66b;
+    }
+
+    .icon-scoreboard-active {
+      color: #67d9f6;
+    }
+
+    .icon-star-active {
+      color: #f7d74c;
+    }
+
+    .icon-account_circle-active {
+      color: #ea8b0f;
+    }
+  }
 }
-
-.navbar-dark .navbar-nav .nav-link:hover {
-  cursor: pointer;
-
-  span {
-    max-width: 200px;
-  }
-
-  .icon-book-active {
-    color:  #c0c0c0;
-  }
-
-  .icon-games-active {
-    color: #8cf66b;
-  }
-
-  .icon-scoreboard-active {
-    color: #67d9f6;
-  }
-
-  .icon-star-active {
-    color: #f7d74c;
-  }
-
-  .icon-account_circle-active {
-    color: #ea8b0f;
-  }
-}
-
 @media (max-width: 768px) {
   .navbar-dark .navbar-nav .nav-link span {
     max-width: 200px;

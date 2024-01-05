@@ -18,45 +18,15 @@ export class GameResultsItemDetailsComponent implements OnChanges {
   currentUser!: User;
 
   @Input() reviewExists: Boolean = false;
-  @Input() review: Review = {
-    idRating: 0,
-    userId: 0,
-    ratingStars: 0,
-    textComment: '',
-    timestamp: new Date(),
-    movieId: 0,
-    movieTitle: '',
-    movieImg: '',
-    movieBackground:'',
-    movieDescription: '',
-    movieLanguage: '',
-    movieReleaseDate: '',
-    movieVoteAverage: 0,
-  };
-  @Input() movie: Movie = {
-    adult: false,
-    backdrop_path:'',
-    genre_ids: [],
-    id: 0,
-    original_language: '',
-    original_title: '',
-    overview: '',
-    popularity: 0,
-    poster_path: '',
-    release_date: '',
-    title: '',
-    video: false,
-    vote_average: 0,
-    vote_count: 0,
-    catch: false,
-  };
+  @Input() review = {} as Review;
+  @Input() movie = {} as Movie;
 
   constructor(public reviewService: ReviewService, private router: Router) {
     this.currentUser = JSON.parse(localStorage.getItem("user") || '') as User;
   }
 
 
-  ngOnChanges() {
+  ngOnChanges(): void {
     this.comment = '';
     this.rating = 0;
     this.isAlreadyFavourite();
@@ -87,7 +57,7 @@ export class GameResultsItemDetailsComponent implements OnChanges {
 
   
   addToFavorites() {
-    this.review = Object.assign({});
+    this.review = {} as Review;
     this.review.userId = this.currentUser.id;
     this.review.textComment = this.comment;
     this.review.ratingStars = this.rating;
@@ -100,6 +70,7 @@ export class GameResultsItemDetailsComponent implements OnChanges {
     this.review.movieReleaseDate = this.movie.release_date;
     this.review.movieVoteAverage = this.movie.vote_average;
     this.reviewService.addReview(this.review);
+    
      this.router.navigateByUrl("/result"); 
      setTimeout(() => {
       alert('Recensione aggiunta con successo');

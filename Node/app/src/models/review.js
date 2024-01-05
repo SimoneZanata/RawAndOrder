@@ -3,7 +3,7 @@ import db from "../../config/config.js";
  
 const { DataTypes } = Sequelize;
 
-const Review = db.define('ratings', {
+const Review = db.define('reviews', {
   idRating: {
     type: DataTypes.INTEGER,
     primaryKey: true,

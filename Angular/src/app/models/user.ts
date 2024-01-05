@@ -5,7 +5,7 @@ export interface User {
   points: number;
 }
 
-export interface LoginDTO {   
+export interface LoginDTO {  
   username?: string;
   password?: string;
 }
@@ -21,5 +21,9 @@ export interface UpdateUser {
   id: number;
 }
 
+export interface RegisterResponse {
+  message?: string;
+  error?: string;
+}
 
 

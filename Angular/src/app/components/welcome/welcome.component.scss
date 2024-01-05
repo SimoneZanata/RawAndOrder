@@ -1,5 +1,4 @@
 .card {
-    display: flex;
     border-radius: 20px;
     background-color: hsla(0, 4%, 10%, 0.769); 
     background-blend-mode: darken;
@@ -8,7 +7,6 @@
     background-position: center;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.44);
     overflow: hidden;
-    margin-bottom: 16px;
     font-family: 'Sen', sans-serif;
     transition: all 1s ease-in-out;
     box-shadow: 0px 20px 10px rgba(0, 0, 0, 0.443);

@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable} from '@angular/core';
 import { switchMap } from 'rxjs';
 import { Review } from 'src/app/models/review';
-import { User } from 'src/app/models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +9,11 @@ import { User } from 'src/app/models/user';
 
 export class ReviewService {
   API_ROOT = 'http://localhost:1234/api';
+
   reviews: Review []=[];
+
   reviewExists: Boolean =false;
+
   review: Review = {
     idRating: 0,
     userId: 0,
@@ -37,7 +39,7 @@ export class ReviewService {
         this.reviewExists = res.exists; 
       if(res.exists===true){
         this.getReview(userId, movieId)
-        console.log('Esiste una recensione:', this.reviewExists);
+        console.log('Esiste una recensione:', this.review);
         }
       },   
       error: (error: any) => {

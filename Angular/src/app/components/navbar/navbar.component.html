@@ -1,22 +1,28 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top shadow">
   <div class="container-fluid">
-    <button
-      class="navbar-toggler icon-button"
-      type="button"
-      (click)="isNavbarCollapsed = !isNavbarCollapsed"
-      aria-controls="navbarTogglerDemo02"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-      color="white"
-    >
+    <span class="navbar-text text-white">RAW&ORDER</span>
+
+    <button class="navbar-toggler icon-button" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"
+      aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" color="white">
       <mat-icon class="icon-menu">menu</mat-icon>
     </button>
-    <div
-      class="collapse navbar-collapse"
-      id="navbarTogglerDemo02"
-      [ngbCollapse]="isNavbarCollapsed"
-    >
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02" [ngbCollapse]="isNavbarCollapsed">
+      
+      <ul *ngIf="!authService.isAuthenticated()" class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/login" routerLinkActive="active">
+            <mat-icon class="icon-login-active">login</mat-icon><span>Login</span>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/register" routerLinkActive="active">
+            <mat-icon class="icon-registration-active">person_add</mat-icon><span>Registrazione</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul *ngIf="authService.isAuthenticated()" class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item active">
           <a class="nav-link" routerLink="/welcome" routerLinkActive="active">
             <mat-icon class="icon-book-active">book</mat-icon><span>Regolamento</span>

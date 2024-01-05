@@ -10,7 +10,8 @@ import { RegisterDTO } from "src/app/models/user";
   styleUrls: ["./register.component.scss"],
 })
 
-export class RegisterComponent implements OnInit {
+
+export class RegisterComponent /*implements OnInit*/ {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
@@ -22,15 +23,17 @@ export class RegisterComponent implements OnInit {
   register(form: NgForm) {
     form.control.markAllAsTouched();
     if (form.valid) {
-      const registerForm: RegisterDTO= form.value;
-   this.authService.register(registerForm).subscribe({
+      const registerForm: RegisterDTO = form.value;
+      this.authService.register(registerForm).subscribe({
         next: () => {
           this.router.navigateByUrl("/login");
           setTimeout(() => {
-            alert('Registrazione avvenuta con successo');
+            alert('Registrazione Effettuata con successo');
           }, 200);
         },
-        error: () => alert("Errore Durante la Registrazione"),
+        error: (error) => {
+          console.error('Errore durante la registrazione:', error);
+        }  
       });
     }
   }

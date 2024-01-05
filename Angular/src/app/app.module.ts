@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './@shared/components/login/login.component';
 import { LogoutComponent } from './@shared/components/logout/logout.component';
@@ -19,7 +19,6 @@ import { GameSessionComponent } from './components/game-section/game-session/gam
 import { CdkDrag, CdkDragPreview, CdkDropList } from '@angular/cdk/drag-drop';
 import { GameResultsComponent } from './components/game-section/game-results/game-results.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HeroComponent } from './components/hero/hero.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -35,7 +34,7 @@ import { PageGameResultsItemDetailsComponent } from './components/page-component
 import { PageGameSessionComponent } from './components/page-components/page-game-session/page-game-session.component';
 import { PageReviewItemDetailsComponent } from './components/page-components/page-review-item-details/page-review-item-details.component';
 import { PageRankingsComponent } from './components/page-components/page-rankings/page-rankings.component';
-
+import { UserAuthInterceptor } from './interceptors/user-auth.interceptor';
 
 
 @NgModule({
@@ -47,7 +46,6 @@ import { PageRankingsComponent } from './components/page-components/page-ranking
     LogoutComponent,
     NavbarComponent,
     WelcomeComponent,
-    HeroComponent,
     ProfileComponent,
     RankingsComponent,
     FooterComponent,
@@ -65,7 +63,6 @@ import { PageRankingsComponent } from './components/page-components/page-ranking
     PageGameSessionComponent,
     PageReviewItemDetailsComponent,
     PageRankingsComponent,
-   
 
   ],
   imports: [
@@ -84,7 +81,13 @@ import { PageRankingsComponent } from './components/page-components/page-ranking
     MatIconModule,
     MatMenuModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UserAuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
