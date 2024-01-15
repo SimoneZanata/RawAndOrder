@@ -1,6 +1,4 @@
 package com.thenetvalue.usersManagement.security.filters;
-
-import com.thenetvalue.usersManagement.security.constants.SecurityConstants;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.FilterChain;
@@ -11,7 +9,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
-
 import javax.crypto.SecretKey;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -19,6 +16,8 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import static com.thenetvalue.usersManagement.security.constants.SecurityConstants.JWT_HEADER;
+import static com.thenetvalue.usersManagement.security.constants.SecurityConstants.JWT_KEY;
 
 public class JWTTokenGeneratorFilter extends OncePerRequestFilter {
 
@@ -28,14 +27,14 @@ public class JWTTokenGeneratorFilter extends OncePerRequestFilter {
             throws IOException, ServletException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (null != authentication) {
-            SecretKey key = Keys.hmacShaKeyFor(SecurityConstants.JWT_KEY.getBytes(StandardCharsets.UTF_8));
+            SecretKey key = Keys.hmacShaKeyFor(JWT_KEY.getBytes(StandardCharsets.UTF_8));
             String jwt = Jwts.builder().setIssuer("Eazy Bank").setSubject("JWT Token")
                     .claim("username", authentication.getName())
                     .claim("authorities", populateAuthorities(authentication.getAuthorities()))
                     .setIssuedAt(new Date())
                     .setExpiration(new Date((new Date()).getTime() + 30000000))
                     .signWith(key).compact();
-            response.setHeader(SecurityConstants.JWT_HEADER, jwt);
+            response.setHeader(JWT_HEADER, jwt);
         }
 
         chain.doFilter(request, response);
@@ -43,7 +42,7 @@ public class JWTTokenGeneratorFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        return !request.getServletPath().equals("/users/login");
+        return !request.getServletPath().equals("/login");
     }
 
     private String populateAuthorities(Collection<? extends GrantedAuthority> collection) {

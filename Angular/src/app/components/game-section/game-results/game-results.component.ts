@@ -63,12 +63,12 @@ export class GameResultsComponent implements OnInit {
       }
     }
     this.gameSessionPoints = count * 10;
-    this.rankService.updatePointsUser(this.gameSessionPoints);
   }
   
 
   showCards(){
     this.gameRepository.setStateTrue();
+    this.rankService.updatePointsUser(this.gameSessionPoints);
   }
 
   onClicked(id: number) {

@@ -11,7 +11,7 @@ import { AuthService } from "src/app/@core/services/auth.service";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router,private next: HttpHandler){}
+  constructor(private authService: AuthService, private router: Router, private next: HttpHandler) { }
   ngOnInit(): void {
     if (this.authService.isAuthenticated()) {
       this.router.navigateByUrl("/");
@@ -23,11 +23,14 @@ export class LoginComponent implements OnInit {
     if (form.valid) {
       this.authService.login(form.value).subscribe({
         next: () => {
-          this.router.navigateByUrl("/welcome");  
+          this.router.navigateByUrl("/welcome");
         },
-        error: (error) =>  console.log(error),
-       
-        
+        error: (error) => {
+          console.log(error),
+          setTimeout(() => {
+            alert('Errore durante l\'accesso');
+          }, 200);
+        }
       });
     }
   }

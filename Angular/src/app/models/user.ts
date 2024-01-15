@@ -21,9 +21,10 @@ export interface UpdateUser {
   id: number;
 }
 
-export interface RegisterResponse {
-  message?: string;
-  error?: string;
+export interface Player{
+  username: string;
+  points :number;
 }
+
 
 

@@ -14,9 +14,20 @@ export class LogoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  logout() { 
-    this.authService.logout();
-    this.router.navigateByUrl("/login");
+  logout() {
+    this.authService.logoutApi().subscribe({
+      next: () => {
+        localStorage.removeItem("user");
+        localStorage.removeItem('moviesSortedByUser');
+        localStorage.removeItem('sortedCriteria');
+        localStorage.removeItem('saveState');
+        localStorage.removeItem('Authorization');
+        localStorage.removeItem('XSRF-TOKEN');
+        this.router.navigateByUrl("/login");
+      },
+      error: (error) => console.log(error),
+    });
   }
-
 }
+
+

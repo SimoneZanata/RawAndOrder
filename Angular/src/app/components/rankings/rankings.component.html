@@ -4,7 +4,7 @@
     <thead>
       <tr>
         <th scope="col">USERNAME</th>
-        <th scope="col" (click)="sortUsers()">
+        <th scope="col" (click)="sortPlayers()">
           PUNTEGGIO
           <span class="material-icons arrows">
             {{ sortDesc ? 'arrow_upward' : 'arrow_downward' }}
@@ -13,9 +13,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users">
-        <td >{{ user.username }}</td>
-        <td >{{ user.points }}</td>
+      <tr *ngFor="let player of players">
+        <td >{{ player.username }}</td>
+        <td >{{ player.points }}</td>
       </tr>
     </tbody>
   </table>

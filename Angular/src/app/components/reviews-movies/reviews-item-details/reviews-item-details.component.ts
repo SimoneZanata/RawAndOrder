@@ -56,10 +56,6 @@ export class ReviewsItemDetailsComponent implements OnChanges {
     this.review.ratingStars=this.rating;
     this.review.textComment=this.comment;
     this.reviewService.editReview(this.review);
-    this.router.navigateByUrl("/reviews");
-    setTimeout(() => {
-      alert('Recensione aggiornata con successo');
-    }, 200);
   }
 }
 

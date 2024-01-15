@@ -13,8 +13,6 @@ export class GameRepositoryService {
     this.loadFromLocalStorage();
   }
 
-
-
   loadFromLocalStorage() {
     const storedMovies = localStorage.getItem('moviesSortedByUser');
     if (storedMovies) {
@@ -30,7 +28,6 @@ export class GameRepositoryService {
     }
   }
 
- 
   setMoviesByUser(movies: Movie[]) {
     this.moviesSortedByUser = movies;
     localStorage.setItem('moviesSortedByUser', JSON.stringify(this.moviesSortedByUser));

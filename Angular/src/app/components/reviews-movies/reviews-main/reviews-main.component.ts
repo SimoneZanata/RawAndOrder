@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ReviewService } from '../../../@shared/services/review.service';
 import { Review } from 'src/app/models/review';
 import { User } from 'src/app/models/user';
@@ -29,9 +29,6 @@ export class ReviewsMainComponent implements OnChanges{
 
   onDeleteClicked(id: number){
     this.reviewService.deleteReview(id);
-    setTimeout(() => {
-      alert('Recensione cancellata con successo');
-    }, 100);
   }
 
   onEditClicked(movieId: number) {

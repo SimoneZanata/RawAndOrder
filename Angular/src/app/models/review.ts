@@ -1,5 +1,5 @@
 export interface Review {
-idRating: number;
+id: number;
 userId: number;
 ratingStars: number;
 textComment: string;

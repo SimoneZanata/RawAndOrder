@@ -9,12 +9,12 @@ import { AuthService } from 'src/app/@core/services/auth.service';
   templateUrl: './page-reviews.component.html',
   styleUrls: ['./page-reviews.component.scss']
 })
-export class PageReviewsComponent{
-  currentUser: User;
+export class PageReviewsComponent implements OnInit{
+ 
  
   constructor (public reviewsService:ReviewService,public authService:AuthService){
-  this.currentUser= this.authService.getCurrentUser();   
-   this.reviewsService.getReviews(this.currentUser.id);
   }
- 
+  ngOnInit(): void {
+    this.reviewsService.getReviews(this.authService.getCurrentUser().id);
+  }
 }

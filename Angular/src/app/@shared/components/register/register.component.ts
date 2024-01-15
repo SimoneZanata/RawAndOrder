@@ -28,11 +28,14 @@ export class RegisterComponent /*implements OnInit*/ {
         next: () => {
           this.router.navigateByUrl("/login");
           setTimeout(() => {
-            alert('Registrazione Effettuata con successo');
+            alert('Registrazione effettuata con successo');
           }, 200);
         },
         error: (error) => {
           console.error('Errore durante la registrazione:', error);
+          setTimeout(() => {
+            alert('Errore durante la Registrazione: ' + error.error);
+          }, 200);
         }  
       });
     }

@@ -12,21 +12,13 @@ import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
- public class CsrfCookieFilter extends OncePerRequestFilter {
+public final class CsrfCookieFilter extends OncePerRequestFilter {
 
-     @Override
-     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-             throws ServletException, IOException {
-
-         CsrfToken csrfToken = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
-         if(null!=csrfToken) {
-             response.setHeader(csrfToken.getHeaderName(), csrfToken.getToken());
-         }
-         filterChain.doFilter(request, response);
-     }
-
-     @Override
-     protected boolean shouldNotFilter(HttpServletRequest request) {
-         return request.getServletPath().equals("/users/register");
-     }
- }
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+        CsrfToken csrfToken = (CsrfToken) request.getAttribute("_csrf");
+        csrfToken.getToken();
+        filterChain.doFilter(request, response);
+    }
+}

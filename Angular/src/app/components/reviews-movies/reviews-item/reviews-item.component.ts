@@ -16,11 +16,13 @@ export class ReviewsItemComponent {
   }
 
   deleteClick() {
-    this.deleteClicked.emit(this.review.idRating)
+    this.deleteClicked.emit(this.review.id)
   }
+
   editClick() {
     this.editClicked.emit(this.review.movieId);
   }
+  
   imgClick(){
     this.imgClicked.emit(this.review.movieId)
   }

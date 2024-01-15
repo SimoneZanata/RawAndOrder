@@ -26,6 +26,7 @@
     <filter-actions connection-id="22d2e350-0429-47bb-ad6b-465d1c59d4d1" dataset="db_utenti.users" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="22d2e350-0429-47bb-ad6b-465d1c59d4d1" dataset="db_utenti.user_sequence" active-filter-id="" />
     <filter-actions connection-id="22d2e350-0429-47bb-ad6b-465d1c59d4d1" dataset="db_utenti.authorities" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="22d2e350-0429-47bb-ad6b-465d1c59d4d1" dataset="db_utenti.reviews" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />

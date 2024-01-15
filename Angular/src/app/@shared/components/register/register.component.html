@@ -10,36 +10,40 @@
         <form #f="ngForm" (ngSubmit)="register(f)">
           <div class="form-group">
             <label class="label" for="email">Email</label>
-            <input [ngModel] name="email" type="text" class="form-control" placeholder="Email" required
-              id="email" #email="ngModel" />
-            <div [style.visibility]="email.invalid && (email.dirty || email.touched) ? 'visible' : 'hidden'"
+            <input [ngModel] name="email" type="text" class="form-control" placeholder="Email" required id="email"
+              #email="ngModel" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"/>
+            <div [style.visibility]="(email.invalid && (email.dirty || email.touched)) ? 'visible' : 'hidden'"
               class="mt-1 small text-danger">
-              <span class="text">Campo obbligatorio</span>
+              <span class="text" *ngIf="email.hasError('pattern')">Email non valida</span>
+              <span class="text" *ngIf="email.hasError('required')">Campo obbligatorio</span>
             </div>
           </div>
           <div class="form-group">
             <label class="label" for="username">Username</label>
             <input [ngModel] name="username" type="text" class="form-control" placeholder="Username" required
-              id="username" #username="ngModel" />
-            <div [style.visibility]="username.invalid && (username.dirty || username.touched) ? 'visible' : 'hidden'"
+              id="username" #username="ngModel" autocomplete="off" pattern="[a-zA-Z0-9]{4,16}" maxlength="16" />
+            <div [style.visibility]="(username.invalid && (username.dirty || username.touched))? 'visible' : 'hidden'"
               class="mt-1 small text-danger">
-              <span class="text">Campo obbligatorio</span>
+              <span class="text" *ngIf="username.hasError('pattern')">Username non valido</span>
+              <span class="text" *ngIf="username.hasError('required')">Campo obbligatorio</span>
             </div>
           </div>
           <div class="form-group">
             <label class="label" for="password">Password</label>
             <input [ngModel] required name="password" type="password" class="form-control" id="password"
-              placeholder="Password" #password="ngModel" />
-            <div [style.visibility]="password.invalid && (password.dirty || password.touched) ? 'visible' : 'hidden'"
+              placeholder="Password" #password="ngModel" autocomplete="off"
+              pattern="(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,16}" maxlength="16" />
+            <div [style.visibility]="(password.invalid && (password.dirty || password.touched)) ? 'visible' : 'hidden'"
               class="mt-1 small text-danger">
-              <span class="text">Campo obbligatorio</span>
+              <span class="text" *ngIf="password.hasError('pattern')">Password non valida</span>
+              <span class="text" *ngIf="password.hasError('required')">Campo obbligatorio</span>
             </div>
-          </div>
-          <div class="form-group">
-            <div class="custom-button d-flex justify-content-center">
-              <button type="submit" class="form-control btn btn-primary rounded submit px-3 mt-2">
-                Registrati
-              </button>
+            <div class="form-group">
+              <div class="custom-button d-flex justify-content-center">
+                <button type="submit" class="form-control btn btn-primary rounded submit px-3 mt-2">
+                  Registrati
+                </button>
+              </div>
             </div>
           </div>
         </form>

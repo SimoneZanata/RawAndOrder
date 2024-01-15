@@ -5,16 +5,13 @@ import {
   HttpEvent,
   HttpInterceptor,
   HttpHeaders,
-  HttpResponse
 } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
-import { User } from '../models/user';
-import { AuthService } from '../@core/services/auth.service';
+import { Observable} from 'rxjs';
 
 @Injectable()
 export class UserAuthInterceptor implements HttpInterceptor {
 
-  constructor(private authService: AuthService) { }
+  constructor() { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let httpHeaders = new HttpHeaders();
@@ -37,17 +34,6 @@ export class UserAuthInterceptor implements HttpInterceptor {
     return next.handle(request)
   }
   
-
-  deleteCookie(key: string) {
-    document.cookie = key + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-}
-
-  getCookie(key: string) {
-    const b = document.cookie.match("(^|;)\\s*" + key + "\\s*=\\s*([^;]+)");
-    return b ? b.pop() : "";
-  }
-  
-
   private shouldExcludePath(url: string): boolean {
     const excludedPaths = ['https://api.themoviedb.org'];
     return excludedPaths.some(path => url.includes(path));

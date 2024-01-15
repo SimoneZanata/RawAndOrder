@@ -70,10 +70,5 @@ export class GameResultsItemDetailsComponent implements OnChanges {
     this.review.movieReleaseDate = this.movie.release_date;
     this.review.movieVoteAverage = this.movie.vote_average;
     this.reviewService.addReview(this.review);
-    
-     this.router.navigateByUrl("/result"); 
-     setTimeout(() => {
-      alert('Recensione aggiunta con successo');
-    }, 200);
   }
 }

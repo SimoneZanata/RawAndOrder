@@ -2,9 +2,12 @@ package com.thenetvalue.usersManagement.model.authority;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.thenetvalue.usersManagement.model.User;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
+@Setter
+@Getter
 @Entity
 @Table(name = "authorities")
 @IdClass(AuthorityId.class) //composite keys
@@ -25,32 +28,4 @@ public class Authority{
         this.username = username;
         this.authority = authority;
     }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getAuthority() {
-        return authority;
-    }
-
-    public void setAuthority(String authority) {
-        this.authority = authority;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-
-
-
 }

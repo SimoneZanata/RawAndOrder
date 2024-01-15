@@ -1,4 +1,5 @@
 package com.thenetvalue.usersManagement.security.filters;
+
 import com.thenetvalue.usersManagement.security.constants.SecurityConstants;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -7,7 +8,6 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -40,17 +40,19 @@ public class JWTTokenValidatorFilter extends OncePerRequestFilter {
                 Authentication auth = new UsernamePasswordAuthenticationToken(username,null,
                         AuthorityUtils.commaSeparatedStringToAuthorityList(authorities));
                 SecurityContextHolder.getContext().setAuthentication(auth);
-            }catch (Exception e) {
-                throw new BadCredentialsException("Invalid Token received!");
+            } catch (Exception e) {
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.getWriter().write("Error: " + e.getMessage());
             }
-
         }
         chain.doFilter(request, response);
     }
 
 
     @Override protected boolean shouldNotFilter(HttpServletRequest request) {
-        return request.getServletPath().equals("/users/login"); }
+        return request.getServletPath().equals("/login") ||
+               request.getServletPath().equals("/register");
+    }
 
 
 }
