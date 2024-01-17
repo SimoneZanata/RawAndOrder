@@ -1,5 +1,4 @@
 package com.thenetvalue.usersManagement.util;
-
 import com.thenetvalue.usersManagement.model.DTOs.RegisterDTO;
 import com.thenetvalue.usersManagement.model.DTOs.UserDTO;
 import com.thenetvalue.usersManagement.model.Player;
@@ -51,7 +50,6 @@ public class UserUtil {
         }
     }
 
-
     public static UserDTO elaborateForResponse(User user){
         UserDTO userDTO =new UserDTO();
         userDTO.setId(user.getId());
@@ -82,22 +80,4 @@ public class UserUtil {
         return players;
     }
 }
-
-
-
-
-
-
-
-
-    /** checkPassword*/
-    // ^ -Inizio della stringa.
-    // Deve contenere almeno una lettera maiuscola ((?=.*[A-Z])).
-    // Deve contenere almeno una lettera minuscola ((?=.*[a-z])).
-    // Deve contenere almeno un numero ((?=.*\d)).
-    // Non deve contenere spazi bianchi ((?!.*\s)).
-    // Non deve contenere caratteri speciali ((?!.*[@#$%^&+=\s])).
-    // Deve avere una lunghezza minima di almeno 8 caratteri (.{8,}).
-    // $ -Fine della stringa.
-
 

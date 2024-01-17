@@ -1,5 +1,4 @@
 package com.thenetvalue.usersManagement.model;
-
 import lombok.Getter;
 import lombok.Setter;
 

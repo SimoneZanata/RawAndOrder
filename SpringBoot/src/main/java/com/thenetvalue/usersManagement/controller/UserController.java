@@ -1,18 +1,14 @@
 package com.thenetvalue.usersManagement.controller;
-
 import com.thenetvalue.usersManagement.model.DTOs.UpdateDTO;
 import com.thenetvalue.usersManagement.model.DTOs.UserDTO;
 import com.thenetvalue.usersManagement.model.Player;
-import com.thenetvalue.usersManagement.model.User;
 import com.thenetvalue.usersManagement.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Optional;
-import static com.thenetvalue.usersManagement.security.constants.SecurityConstants.ERROR_MSG;
+
 
 
 @RestController

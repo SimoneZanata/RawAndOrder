@@ -12,7 +12,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Base64;
-
+import static com.thenetvalue.usersManagement.security.constants.ExceptionMessagesConstants.ERROR_FAULTY_FIELDS;
+import static com.thenetvalue.usersManagement.security.constants.ExceptionMessagesConstants.ERROR_MISS_FIELDS;
 import static org.springframework.security.web.authentication.www.BasicAuthenticationConverter.AUTHENTICATION_SCHEME_BASIC;
 
 @NonNullApi
@@ -20,15 +21,12 @@ public class LoginFilter extends OncePerRequestFilter {
 
     private static final String POST_METHOD = "POST";
     private static final String LOGIN_PATH = "/login";
-    public static final String ERROR_MISS_CREDENTIALS= "Missing 'username' or 'password' in POST request body.";
-    public static final String ERROR_FAULTY_CREDENTIALS= "Password or username are invalid. Ensure they meet the security requirements ";
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,  HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         String username, password;
         if (request.getMethod().equals(POST_METHOD) && request.getServletPath().equals(LOGIN_PATH)) {
-            try {
                 // Ottieni il corpo della richiesta POST
                 BufferedReader reader = request.getReader();
                 StringBuilder requestBody = new StringBuilder();
@@ -44,10 +42,11 @@ public class LoginFilter extends OncePerRequestFilter {
                     username = jsonNode.get("username").asText();
                     password = jsonNode.get("password").asText();
                 } else {
-                    throw new ServletException(ERROR_MISS_CREDENTIALS);
+                    throw new ServletException(ERROR_MISS_FIELDS);
                 }
                 if (!UserUtil.isValidPassword(password) ||(!UserUtil.isValidUsername(username))){
-                    throw new ServletException(ERROR_FAULTY_CREDENTIALS);
+
+                    throw new ServletException(ERROR_FAULTY_FIELDS);
                 }
                   else {
                     // Creare un header "Authorization" con le credenziali in Base64
@@ -66,16 +65,6 @@ public class LoginFilter extends OncePerRequestFilter {
                     };
                     filterChain.doFilter(requestWrapper, response);
                }
-            } catch (ServletException e) {
-                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                response.getWriter().write("Error: " + e.getMessage());
-            } catch (IOException e) {
-                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                response.getWriter().write("Error: " + e.getMessage());
-            }
-
-        } else {
-            filterChain.doFilter(request, response);
-        }
+        } else filterChain.doFilter(request, response);
     }
 }

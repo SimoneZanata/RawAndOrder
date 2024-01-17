@@ -1,5 +1,4 @@
 package com.thenetvalue.usersManagement.security.filters;
-
 import com.thenetvalue.usersManagement.security.constants.SecurityConstants;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -13,10 +12,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
-
 import javax.crypto.SecretKey;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+
+import static com.thenetvalue.usersManagement.security.constants.ExceptionMessagesConstants.ERROR_INVALID_TOKEN;
 
 public class JWTTokenValidatorFilter extends OncePerRequestFilter {
 
@@ -42,7 +42,7 @@ public class JWTTokenValidatorFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(auth);
             } catch (Exception e) {
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.getWriter().write("Error: " + e.getMessage());
+                response.getWriter().write(ERROR_INVALID_TOKEN + e.getMessage());
             }
         }
         chain.doFilter(request, response);

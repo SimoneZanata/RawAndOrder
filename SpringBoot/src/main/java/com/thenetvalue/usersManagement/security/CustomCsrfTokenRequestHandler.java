@@ -1,5 +1,4 @@
 package com.thenetvalue.usersManagement.security;
-
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.web.csrf.CsrfToken;

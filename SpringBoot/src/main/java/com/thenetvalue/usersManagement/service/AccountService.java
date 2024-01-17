@@ -1,6 +1,4 @@
 package com.thenetvalue.usersManagement.service;
-
-
 import com.thenetvalue.usersManagement.dao.UserRepositoryDAO;
 import com.thenetvalue.usersManagement.model.DTOs.RegisterDTO;
 import com.thenetvalue.usersManagement.model.DTOs.UserDTO;
@@ -18,6 +16,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.Objects;
 
+import static com.thenetvalue.usersManagement.security.constants.ExceptionMessagesConstants.*;
+
 @Service
 public class AccountService {
     @Autowired
@@ -28,13 +28,25 @@ public class AccountService {
     public AccountService(@Qualifier("dbUserDAO") UserRepositoryDAO userDAO) {this.userDAO = userDAO;}
 
 
-    public void logout(HttpServletResponse response, HttpServletRequest request){
-        SecurityContextHolder.clearContext();
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            session.invalidate();
-        }
-        UserUtil.handleLogOutResponseCookie(response, request);
+    public void registerUser(RegisterDTO registerDTO)throws IllegalArgumentException{
+        Objects.requireNonNull(registerDTO.getPassword(), ERROR_NULL_PASSWORD);
+        Objects.requireNonNull(registerDTO.getUsername(), ERROR_NULL_USERNAME);
+        Objects.requireNonNull(registerDTO.getEmail(), ERROR_NULL_EMAIL);
+
+        if (!userDAO.existsByUsername(registerDTO.getUsername())) {
+            if(UserUtil.isValidPassword(registerDTO.getPassword())) {
+                registerDTO.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
+            }
+            else {
+                throw new IllegalArgumentException(ERROR_FAULTY_PASSWORD);
+            }if(!UserUtil.isValidUsername(registerDTO.getUsername())) {
+                throw new IllegalArgumentException(ERROR_FAULTY_USERNAME);
+            }
+            if(!UserUtil.isValidEmail(registerDTO.getEmail())) {
+                throw new IllegalArgumentException(ERROR_FAULTY_EMAIL);
+            }
+            userDAO.save(UserUtil.elaborateForDB(registerDTO));
+        } else throw new DuplicateKeyException(ERROR_USERNAME_DUPLICATED);
     }
 
     public UserDTO logIn(Authentication authentication){
@@ -43,24 +55,12 @@ public class AccountService {
         return UserUtil.elaborateForResponse(user);
     }
 
-    public void registerUser(RegisterDTO registerDTO)throws IllegalArgumentException{
-        Objects.requireNonNull(registerDTO.getPassword(), "Password is null");
-        Objects.requireNonNull(registerDTO.getUsername(), "Username is null");
-        Objects.requireNonNull(registerDTO.getEmail(), "Email is null");
-
-        if (!userDAO.existsByUsername(registerDTO.getUsername())) {
-            if(UserUtil.isValidPassword(registerDTO.getPassword())) {
-                registerDTO.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
-            }
-            else {
-                throw new IllegalArgumentException("Invalid password. Ensure that it meets the security requirements");
-            }if(!UserUtil.isValidUsername(registerDTO.getUsername())) {
-                throw new IllegalArgumentException("Invalid Username. Ensure that it meets the security requirements");
-            }
-            if(!UserUtil.isValidEmail(registerDTO.getEmail())) {
-                throw new IllegalArgumentException("Invalid email. Ensure that it meets the security requirements");
-            }
-            userDAO.save(UserUtil.elaborateForDB(registerDTO));
-        } else throw new DuplicateKeyException("Username already exist");
+    public void logout(HttpServletResponse response, HttpServletRequest request){
+        SecurityContextHolder.clearContext();
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+        UserUtil.handleLogOutResponseCookie(response, request);
     }
 }
