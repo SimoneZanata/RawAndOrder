@@ -20,6 +20,7 @@ public class FilterChainExceptionHandler extends OncePerRequestFilter {
             handleFilterException(response, e);
         }
     }
+
     private void handleFilterException(HttpServletResponse response, Exception e) throws IOException {
         String errorMessage = e.getMessage();
         int statusCode = switch (e.getClass().getSimpleName()) {
